@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Example
+{% endblock%}
+
+{% block content %}
+{% if player.free_Q == 'Yes' %}
+    <p>
+        If you choose yes in the above question, you will be asked the following question:
+        For each row, please indicate whether you would know the value of Q at that price.
+        <img src="{% static "intro_part/Urn_QQuiz_Ans.png" %}" height="400">
+    </p>
+    <p>
+        Suppose you made choices like above, and the computer draws 35. Then you will pay 35 ECUs,
+        and keep 100-35=65 ECUs for that round. We will then tell you the value of Q. Suppose the computer
+        draws 60. Then you will keep your 100 ECUs, and we won’t tell you the value of Q.
+    </p>
+    <p>
+        If the computer draws 65. Then you can keep 100 ECUs for that round. We will not tell you the value of Q in
+        that round
+    </p>
+{% endif %}
+
+
+
+    {% next_button %}
+
+{% endblock %}

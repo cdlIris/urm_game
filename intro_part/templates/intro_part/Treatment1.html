@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Treatment 1
+{% endblock %}
+
+{% block content %}
+<p>
+    In the beginning of each round, you will be given an endowment of 100 ECUs. Any gain or loss from that round will be
+    added to this amount. The amount remaining at the end of the round will not be carried over to the following round.
+    At the end of the experiment 1 round will be randomly selected. Your ending balance in the selected round will
+    determine your final payment.
+</p>
+<p>
+    We have two urns: a Red Urn and a Black Urn. Each urn contains 10 balls, with a mix of red balls and black balls.
+    The proportion of red balls in the Red Urn and the proportion of black balls in the Black Urn are always equal to Q,
+    which is greater than 50%. That means, there are always more red balls in the Red Urn and more black balls in the
+    Black Urn. The exact value of Q varies from one round to another. In each round, you won’t know the exact value of Q,
+    but may have the chance to learn as the round proceeds.
+</p>
+
+    {% next_button %}
+
+{% endblock %}

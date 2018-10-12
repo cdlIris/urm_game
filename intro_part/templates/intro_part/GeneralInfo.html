@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    General Information
+{% endblock %}
+
+{% block content %}
+<p>
+    Welcome and thank you for your participation!
+</p>
+<p>
+    Please feel free to ask any questions during the experiment and an experimenter will help you privately. You may use
+    the paper and pen on your desk, but not any other tools, such as calculator or smart phone. Turn off your phones or
+    at least turn on the silent mode. Please remain quiet and refrain from talking to others or looking at others’
+    screens during the experiment. Thank you for your cooperation!
+</p>
+<p>
+    Today’s session contains 2 Blocks. Each Block contains 20 Rounds. In each Round, you will observe some computerised
+    ball drawings from some urns. You will then be asked to make some decisions based on the information we will provide
+    to you. Finally, you payment will depend on your answers and luck. Understanding the following instructions will
+    help you maximize your payoff. So please pay attention.  The currency used in this experiment is called Experimental
+    Cash Unit (ECU). Your ECUs will be converted to monetary rewards at the end at the rate of XXX ECUs=€1.
+</p>
+<p>
+    Please try your best in answering all questions, as any question may count to determine your final real cash
+    payments. You will be paid at the end of the experiment in private. And you may ask any questions you might still have.
+</p>
+
+    {% next_button %}
+
+{% endblock %}

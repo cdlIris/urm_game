@@ -1,0 +1,148 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Round {{ round_num }}
+{% endblock %}
+
+{% block content %}
+<p>
+    This is a new round you have {{ Constants.endowment }} ECU
+</p>
+<p>
+    Now the following two cases are equally likely. And Red Urn and Black Urn are equally likely
+</p>
+<p>
+   <img src= "{% static "intro_part/Urn_Q.png" %}" height="400">
+</p>
+<p>
+    The following are the balls drawn by the computer:
+<style>
+#circle {
+      width: 50px;
+      height: 50px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      background: black;
+}
+#Q_quiz{
+    display:none;
+}
+
+</style>
+    <table>
+        <tr>
+            {% for c in ball_lst1 %}
+                <td><div id = 'circle' style= {{c}} ></div></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for c in ball_lst2 %}
+                <td><div id = 'circle' style= {{c}} ></div></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for c in ball_lst3 %}
+                <td><div id = 'circle' style= {{c}} ></div></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for c in ball_lst4 %}
+                <td><div id = 'circle' style= {{c}} ></div></td>
+            {% endfor %}
+        </tr>
+    </table>
+</p>
+
+<p>
+    {{ red }} red balls and {{ black }} black balls are drawn.
+</p>
+
+<div id="free_Q">{% formfield player.free_Q %}</div>
+<div id="Q_quiz">
+    <p>
+        If you choose yes in the above question, you will be asked the following question:
+        <br>
+        For each row, please indicate whether you would know the value of Q at that price.
+    </p>
+    <table style="width:100%">
+        <tr>
+            <th>Pay 10 ECUs to know the value of Q</th>
+                {% for choice in form.quiz1 %}
+                     <th>  {{ choice }}   </th>
+                {% endfor %}
+        </tr>
+        <tr>
+            <th>Pay 20 ECUs to know the value of Q</th>
+                {% for choice in form.quiz2 %}
+                     <th>  {{ choice }}   </th>
+                {% endfor %}
+        </tr>
+        <tr>
+            <th>Pay 30 ECUs to know the value of Q</th>
+                {% for choice in form.quiz3 %}
+                     <th>  {{ choice }}   </th>
+                {% endfor %}
+        </tr>
+        <tr>
+            <th>Pay 40 ECUs to know the value of Q</th>
+                {% for choice in form.quiz4 %}
+                     <th>  {{ choice }}   </th>
+                {% endfor %}
+        </tr>
+        <tr>
+            <th>Pay 50 ECUs to know the value of Q</th>
+            {% for choice in form.quiz5 %}
+                     <th>  {{ choice }}   </th>
+                {% endfor %}
+        </tr>
+        <tr>
+            <th>Pay 60 ECUs to know the value of Q</th>
+            {% for choice in form.quiz6 %}
+                     <th>  {{ choice }}   </th>
+                {% endfor %}
+        </tr>
+        <tr>
+            <th>Pay 70 ECUs to know the value of Q</th>
+            {% for choice in form.quiz7 %}
+                    <th>  {{ choice }}   </th>
+                {% endfor %}
+        </tr>
+        <tr>
+            <th>Pay 80 ECUs to know the value of Q</th>
+            {% for choice in form.quiz8 %}
+                     <th>  {{ choice }}   </th>
+                {% endfor %}
+        </tr>
+        <tr>
+            <th>Pay 90 ECUs to know the value of Q</th>
+            {% for choice in form.quiz9 %}
+                     <th>  {{ choice }}   </th>
+                {% endfor %}
+        </tr>
+        <tr>
+            <th>Pay 100 ECUs to know the value of Q</th>
+            {% for choice in form.quiz10 %}
+                     <th>  {{ choice }}   </th>
+                {% endfor %}
+        </tr>
+    </table>
+</div>
+<script>
+
+    document.getElementById('free_Q').addEventListener('change', function (e) {
+        if (e.target.value === "Yes") {
+            $("#Q_quiz").show();
+        }
+        if (e.target.value === "No") {
+            $("#Q_quiz").hide();
+        }
+    });
+
+</script>
+
+
+    {% next_button %}
+
+{% endblock %}

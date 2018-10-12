@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+    <p>
+        After each round, you won’t know immediately whether your guess is correct. At the end of the experiment, one
+        round will be randomly selected, and your earnings from that round will be announced.
+    </p>
+    <p>
+        If you don’t have further questions, please click Next to start the experiment.
+    </p>
+    {% next_button %}
+{% endblock %}
+
+
