@@ -13,7 +13,7 @@
     Now the following two cases are equally likely. And Red Urn and Black Urn are equally likely
 </p>
 <p>
-   <img src= "{% static "intro_part/Urn_Q.png" %}" height="400">
+   <img src= "{% static chart %}" height="400">
 </p>
 <p>
     The following are the balls drawn by the computer:
@@ -29,6 +29,9 @@
 #Q_quiz{
     display:none;
 }
+#no_part{
+    display:none;
+}
 
 </style>
     <table>
@@ -42,24 +45,21 @@
                 <td><div id = 'circle' style= {{c}} ></div></td>
             {% endfor %}
         </tr>
-        <tr>
-            {% for c in ball_lst3 %}
-                <td><div id = 'circle' style= {{c}} ></div></td>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for c in ball_lst4 %}
-                <td><div id = 'circle' style= {{c}} ></div></td>
-            {% endfor %}
-        </tr>
     </table>
 </p>
 
 <p>
     {{ red }} red balls and {{ black }} black balls are drawn.
 </p>
+ {{ form.free_Q.label }}<br>
+<input type="radio" id="free_Q_yes" name="free_Q" value="Yes"/> &nbsp; Yes <br>
+<input type="radio" id="free_Q_no" name="free_Q" value="No"/> &nbsp; No<br>
+<br>
 
-<div id="free_Q">{% formfield player.free_Q %}</div>
+<div id="no_part">
+    Because you selected No, even if information about Q is free, you will not see it.
+</div>
+<br>
 <div id="Q_quiz">
     <p>
         If you choose yes in the above question, you will be asked the following question:
@@ -69,80 +69,262 @@
     <table style="width:100%">
         <tr>
             <th>Pay 10 ECUs to know the value of Q</th>
-                {% for choice in form.quiz1 %}
-                     <th>  {{ choice }}   </th>
-                {% endfor %}
+            <th>Yes &nbsp;<input type="radio" id="o1a" name="quiz1" value="Yes" /></th>
+            <th>No&nbsp;<input type="radio" id="o1B" name="quiz1" value="No" /></th>
         </tr>
         <tr>
             <th>Pay 20 ECUs to know the value of Q</th>
-                {% for choice in form.quiz2 %}
-                     <th>  {{ choice }}   </th>
-                {% endfor %}
+            <th>Yes &nbsp;<input type="radio" id="o2a" name="quiz2" value="Yes" /></th>
+            <th>No&nbsp;<input type="radio" id="o2B" name="quiz2" value="No" /></th>
         </tr>
         <tr>
             <th>Pay 30 ECUs to know the value of Q</th>
-                {% for choice in form.quiz3 %}
-                     <th>  {{ choice }}   </th>
-                {% endfor %}
+            <th>Yes &nbsp;<input type="radio" id="o3a" name="quiz3" value="Yes" /></th>
+            <th>No&nbsp;<input type="radio" id="o3B" name="quiz3" value="No" /></th>
         </tr>
         <tr>
             <th>Pay 40 ECUs to know the value of Q</th>
-                {% for choice in form.quiz4 %}
-                     <th>  {{ choice }}   </th>
-                {% endfor %}
+            <th>Yes &nbsp;<input type="radio" id="o4a" name="quiz4" value="Yes" /></th>
+            <th>No&nbsp;<input type="radio" id="o4B" name="quiz4" value="No" /></th>
         </tr>
         <tr>
             <th>Pay 50 ECUs to know the value of Q</th>
-            {% for choice in form.quiz5 %}
-                     <th>  {{ choice }}   </th>
-                {% endfor %}
+            <th>Yes &nbsp;<input type="radio" id="o5a" name="quiz5" value="Yes" /></th>
+            <th>No&nbsp;<input type="radio" id="o5B" name="quiz5" value="No" /></th>
         </tr>
         <tr>
             <th>Pay 60 ECUs to know the value of Q</th>
-            {% for choice in form.quiz6 %}
-                     <th>  {{ choice }}   </th>
-                {% endfor %}
+            <th>Yes &nbsp;<input type="radio" id="o6a" name="quiz6" value="Yes" /></th>
+            <th>No&nbsp;<input type="radio" id="o6B" name="quiz6" value="No" /></th>
         </tr>
         <tr>
             <th>Pay 70 ECUs to know the value of Q</th>
-            {% for choice in form.quiz7 %}
-                    <th>  {{ choice }}   </th>
-                {% endfor %}
+            <th>Yes &nbsp;<input type="radio" id="o7a" name="quiz7" value="Yes" /></th>
+            <th>No&nbsp;<input type="radio" id="o7B" name="quiz7" value="No" /></th>
         </tr>
         <tr>
             <th>Pay 80 ECUs to know the value of Q</th>
-            {% for choice in form.quiz8 %}
-                     <th>  {{ choice }}   </th>
-                {% endfor %}
+            <th>Yes &nbsp;<input type="radio" id="o8a" name="quiz8" value="Yes" /></th>
+            <th>No&nbsp;<input type="radio" id="o8B" name="quiz8" value="No" /></th>
         </tr>
         <tr>
             <th>Pay 90 ECUs to know the value of Q</th>
-            {% for choice in form.quiz9 %}
-                     <th>  {{ choice }}   </th>
-                {% endfor %}
+            <th>Yes &nbsp;<input type="radio" id="o9a" name="quiz9" value="Yes" /></th>
+            <th>No&nbsp;<input type="radio" id="o9B" name="quiz9" value="No" /></th>
         </tr>
         <tr>
             <th>Pay 100 ECUs to know the value of Q</th>
-            {% for choice in form.quiz10 %}
-                     <th>  {{ choice }}   </th>
-                {% endfor %}
+            <th><label>Yes &nbsp;<input type="radio" id="o10a" name="quiz10" value="Yes" /></label></th>
+            <th><label>No&nbsp;<input type="radio" id="o10B" name="quiz10" value="No" /></label></th>
         </tr>
     </table>
 </div>
 <script>
 
-    document.getElementById('free_Q').addEventListener('change', function (e) {
-        if (e.target.value === "Yes") {
-            $("#Q_quiz").show();
-        }
-        if (e.target.value === "No") {
-            $("#Q_quiz").hide();
-        }
+
+
+    $(document).ready(function(){
+        var select_No = function() {
+            $("#o1B").prop("checked", true);
+            $("#o2B").prop("checked", true);
+            $("#o3B").prop("checked", true);
+            $("#o4B").prop("checked", true);
+            $("#o5B").prop("checked", true);
+            $("#o6B").prop("checked", true);
+            $("#o7B").prop("checked", true);
+            $("#o8B").prop("checked", true);
+            $("#o9B").prop("checked", true);
+            $("#o10B").prop("checked", true);
+        };
+
+        $('input:radio[name="free_Q"]').change(function(){
+            if ($(this).val() == 'Yes') {
+                $("#Q_quiz").show();
+                $("#no_part").hide();
+                $("#next_btn").attr('disabled', 'disabled');
+            }
+            if ($(this).val() === "No") {
+                $("#Q_quiz").hide();
+                $("#no_part").show();
+                $("#next_btn").removeAttr('disabled');
+            }
+        });
+        $('input:radio[name="quiz1"]').change(function(){
+            $("#next_btn").removeAttr('disabled');
+
+            if ($(this).is(':checked') && $(this).val() == 'No') {
+                select_No();
+            }
+            if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o10B").prop("checked", true);
+                $("#o2B").prop("checked", true);
+                $("#o3B").prop("checked", true);
+                $("#o4B").prop("checked", true);
+                $("#o5B").prop("checked", true);
+                $("#o6B").prop("checked", true);
+                $("#o7B").prop("checked", true);
+                $("#o8B").prop("checked", true);
+                $("#o9B").prop("checked", true);
+            }
+        });
+        $('input:radio[name="quiz2"]').change(function(){
+            $("#next_btn").removeAttr('disabled');
+            if ($(this).is(':checked') && $(this).val() == 'No') {
+                select_No();
+            }
+            if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o1a").prop("checked", true);
+                $("#o10B").prop("checked", true);
+                $("#o3B").prop("checked", true);
+                $("#o4B").prop("checked", true);
+                $("#o5B").prop("checked", true);
+                $("#o6B").prop("checked", true);
+                $("#o7B").prop("checked", true);
+                $("#o8B").prop("checked", true);
+                $("#o9B").prop("checked", true);
+            }
+        });
+        $('input:radio[name="quiz3"]').change(function(){
+            $("#next_btn").removeAttr('disabled');
+            if ($(this).is(':checked') && $(this).val() == 'No') {
+                select_No();
+            }
+            if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o1a").prop("checked", true);
+                $("#o2a").prop("checked", true);
+                $("#o4B").prop("checked", true);
+                $("#o5B").prop("checked", true);
+                $("#o6B").prop("checked", true);
+                $("#o7B").prop("checked", true);
+                $("#o8B").prop("checked", true);
+                $("#o9B").prop("checked", true);
+                $("#o10B").prop("checked", true);
+            }
+        });
+        $('input:radio[name="quiz4"]').change(function(){
+            $("#next_btn").removeAttr('disabled');
+            if ($(this).is(':checked') && $(this).val() == 'No') {
+                select_No();
+            }
+            if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o1a").prop("checked", true);
+                $("#o2a").prop("checked", true);
+                $("#o3a").prop("checked", true);
+                $("#o5B").prop("checked", true);
+                $("#o6B").prop("checked", true);
+                $("#o7B").prop("checked", true);
+                $("#o8B").prop("checked", true);
+                $("#o9B").prop("checked", true);
+                $("#o10B").prop("checked", true);
+            }
+        });
+        $('input:radio[name="quiz5"]').change(function(){
+            $("#next_btn").removeAttr('disabled');
+            if ($(this).is(':checked') && $(this).val() == 'No') {
+                select_No();
+            }
+            if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o1a").prop("checked", true);
+                $("#o2a").prop("checked", true);
+                $("#o4a").prop("checked", true);
+                $("#o3a").prop("checked", true);
+                $("#o6B").prop("checked", true);
+                $("#o7B").prop("checked", true);
+                $("#o8B").prop("checked", true);
+                $("#o9B").prop("checked", true);
+                $("#o10B").prop("checked", true);
+            }
+        });
+        $('input:radio[name="quiz6"]').change(function(){
+            $("#next_btn").removeAttr('disabled');
+            if ($(this).is(':checked') && $(this).val() == 'No') {
+                select_No();
+            }
+            if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o1a").prop("checked", true);
+                $("#o2a").prop("checked", true);
+                $("#o4a").prop("checked", true);
+                $("#o5a").prop("checked", true);
+                $("#o3a").prop("checked", true);
+                $("#o7B").prop("checked", true);
+                $("#o8B").prop("checked", true);
+                $("#o9B").prop("checked", true);
+                $("#o10B").prop("checked", true);
+            }
+        });
+        $('input:radio[name="quiz7"]').change(function(){
+            $("#next_btn").removeAttr('disabled');
+            if ($(this).is(':checked') && $(this).val() == 'No') {
+                select_No();
+            }
+            if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o1a").prop("checked", true);
+                $("#o2a").prop("checked", true);
+                $("#o4a").prop("checked", true);
+                $("#o5a").prop("checked", true);
+                $("#o6a").prop("checked", true);
+                $("#o3a").prop("checked", true);
+                $("#o8B").prop("checked", true);
+                $("#o9B").prop("checked", true);
+                $("#o10B").prop("checked", true);
+            }
+        });
+        $('input:radio[name="quiz8"]').change(function(){
+            $("#next_btn").removeAttr('disabled');
+            if ($(this).is(':checked') && $(this).val() == 'No') {
+                select_No();
+            }
+            if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o1a").prop("checked", true);
+                $("#o2a").prop("checked", true);
+                $("#o4a").prop("checked", true);
+                $("#o5a").prop("checked", true);
+                $("#o6a").prop("checked", true);
+                $("#o7a").prop("checked", true);
+                $("#o3a").prop("checked", true);
+                $("#o9B").prop("checked", true);
+                $("#o10B").prop("checked", true);
+            }
+        });
+        $('input:radio[name="quiz9"]').change(function(){
+            $("#next_btn").removeAttr('disabled');
+            if ($(this).is(':checked') && $(this).val() == 'No') {
+                select_No();
+            }
+            if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o1a").prop("checked", true);
+                $("#o2a").prop("checked", true);
+                $("#o3a").prop("checked", true);
+                $("#o4a").prop("checked", true);
+                $("#o5a").prop("checked", true);
+                $("#o6a").prop("checked", true);
+                $("#o7a").prop("checked", true);
+                $("#o8a").prop("checked", true);
+                $("#o10B").prop("checked", true);
+            }
+        });
+        $('input:radio[name="quiz10"]').change(function(){
+            $("#next_btn").removeAttr('disabled');
+            if ($(this).is(':checked') && $(this).val() == 'No') {
+                select_No();
+            }
+            if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o1a").prop("checked", true);
+                $("#o2a").prop("checked", true);
+                $("#o3a").prop("checked", true);
+                $("#o4a").prop("checked", true);
+                $("#o5a").prop("checked", true);
+                $("#o6a").prop("checked", true);
+                $("#o7a").prop("checked", true);
+                $("#o8a").prop("checked", true);
+                $("#o9a").prop("checked", true);
+            }
+        });
     });
 
 </script>
 
 
-    {% next_button %}
+<button id="next_btn" class="otree-btn-next btn btn-primary next-button otree-next-button" disabled>Confirm</button>
 
 {% endblock %}

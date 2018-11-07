@@ -6,6 +6,7 @@
 {% endblock%}
 
 {% block content %}
+<div id="free_yes" >
 {% if player.free_Q == 'Yes' %}
     <p>
         If you choose yes in the above question, you will be asked the following question:
@@ -22,9 +23,25 @@
         that round
     </p>
 {% endif %}
+</div>
+{% if player.free_Q == 'No' %}
+<p>
+    Because you select No, then even if information about Q is free, you will not see it.
+</p>
+<h4>Please try 'Yes' to enable the next button.</h4>
+
+{% endif %}
 
 
 
-    {% next_button %}
+<button id='next_btn' class="otree-btn-next btn btn-primary next-button otree-next-button">N</button>
 
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //disable the submit button
+                $("#next_btn").attr("disabled", true);
+        });
+        </script>
 {% endblock %}

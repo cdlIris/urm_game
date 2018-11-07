@@ -15,12 +15,11 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'experiment_urn'
     players_per_group = None
-    num_rounds = 10
+    num_rounds = 40
 
     endowment = 100
-
-
-    ball_set_Q = [[0.8, 0.6]]
+    ball_set_Q = [[0.7, 0.6], [0.9, 0.6], [0.7, 0.5], [0.9, 0.5]]
+    Urn_set = [[0.75, 0.25], [0.6, 0.4]]
 
 
 class Subsession(BaseSubsession):
@@ -30,11 +29,27 @@ class Subsession(BaseSubsession):
 
         if 1 <= self.round_number <= 10:
             case_selected = Constants.ball_set_Q[0][case]
+        if 11 <= self.round_number <= 20:
+            case_selected = Constants.ball_set_Q[1][case]
+        if 21 <= self.round_number <= 30:
+            case_selected = Constants.ball_set_Q[2][case]
+        if 31 <= self.round_number <= 40:
+            case_selected = Constants.ball_set_Q[3][case]
 
         return case_selected
 
     def select_color(self):
-        color = np.random.choice(np.arange(0, 2), p=[0.5, 0.5])  # 0 Red, 1 Black
+        Urn_prob = Constants.Urn_set
+        if self.round_number <= 10:
+            Urn_prob = Urn_prob[0]
+        if 10 < self.round_number <= 20:
+            Urn_prob = Urn_prob[0]
+        if 20 < self.round_number <= 30:
+            Urn_prob = Urn_prob[1]
+        if 30 < self.round_number <= 40:
+            Urn_prob = Urn_prob[1]
+
+        color = np.random.choice(np.arange(0, 2), p=[Urn_prob[0], Urn_prob[1]])  # 0 Red, 1 Black
         col_order = ['red', 'black']
         if color == 1:
             col_order.reverse()
@@ -50,10 +65,10 @@ class Subsession(BaseSubsession):
             color = self.select_color()
             Q = self.select_Q()
             balls_lst = [] # draw 20 balls with replacement
-            for i in range(0,20):
+            for i in range(0,6):
                 balls_lst.append(np.random.choice(np.array(color), p=[Q, 1-Q]))
 
-            p.participant.vars['20balls'] = balls_lst
+            p.participant.vars['6balls'] = balls_lst
             p.participant.vars['Q_lst'].append(Q)
             p.participant.vars['color_lst'].append([color[0]])
 
@@ -74,16 +89,16 @@ class Player(BasePlayer):
     Q_value = models.FloatField()
     charge = models.IntegerField()
 
-    quiz1 = models.StringField(choices=['Yes','No'], widget=widgets.RadioSelect)
-    quiz2 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect)
-    quiz3 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect)
-    quiz4 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect)
-    quiz5 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect)
-    quiz6 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect)
-    quiz7 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect)
-    quiz8 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect)
-    quiz9 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect)
-    quiz10 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect)
+    quiz1 = models.StringField(choices=['Yes','No'], widget=widgets.RadioSelect, blank=True)
+    quiz2 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
+    quiz3 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
+    quiz4 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
+    quiz5 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
+    quiz6 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
+    quiz7 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
+    quiz8 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
+    quiz9 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
+    quiz10 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
 
     def flip_coin(self):
         self.coin_value = random.randint(0, 1) # 0 not free, 1 free

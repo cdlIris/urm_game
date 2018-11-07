@@ -10,6 +10,9 @@
     #quiz{
         display: none;
     }
+    #no_part{
+        display: none;
+    }
 </style>
 <p>
    Now the following two cases are equally likely. And Red Urn and Black Urn are equally likely.
@@ -18,7 +21,6 @@
     The following might be the balls drawn by the computer:
     <br>
     <img src= "{% static "intro_part/Urn_balls.png" %}" height="300">
-</p>
 <p>
     <br>
     12 red balls and 8 black balls are drawn.
@@ -42,7 +44,16 @@
         If the computer draws 65. Then you can keep 100 ECUs for that round. We will not tell you the value of Q in
         that round
     </p>
+
 </div>
+<div id="no_part">
+<p>
+    If you select No, then even if information about Q is free, you will not see it.
+    Please try 'Yes' to enable the next button.
+</p>
+</div>
+
+
 <p>
     Next we will ask you to guess the color of the urn.
 </p>
@@ -50,19 +61,23 @@
     {% formfield player.color %}
 </p>
 <script>
-
     document.getElementById('ex_free_Q').addEventListener('change', function (e) {
         if (e.target.value === "Yes") {
             $("#quiz").show();
+            $("#no_part").hide();
+            $("#next_btn").removeAttr('disabled');
         }
         if (e.target.value === "No") {
             $("#quiz").hide();
+            $("#no_part").show();
+            $("#next_btn").attr("disabled", "disabled");
         }
     });
+
 
 </script>
 
 
-    {% next_button %}
+<button id="next_btn" class="otree-btn-next btn btn-primary next-button otree-next-button" disabled>Confirm</button>
 
 {% endblock %}
