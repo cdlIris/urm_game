@@ -76,7 +76,7 @@ class Results(Page):
 
     def vars_for_template(self):
         return {
-            'case': self.round_number/10
+            'case': int(self.round_number/10)
         }
 
 
