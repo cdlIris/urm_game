@@ -1,0 +1,74 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<div class="scene scene--card">
+  <div class="card">
+    <div class="card__face card__face--front"></div>
+    <div class="card__face card__face--back">{{ msg }}</div>
+  </div>
+</div>
+<p>Click card to flip.</p>
+
+{% formfields %}
+<style>
+body { font-family: sans-serif; }
+
+.scene {
+  width: 200px;
+  height: 260px;
+  border: 1px solid #CCC;
+  margin: 40px 400px;
+  perspective: 600px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: transform 1s;
+}
+
+.card.is-flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 260px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 10px;
+  backface-visibility: hidden;
+}
+
+.card__face--front {
+  background: red;
+}
+
+.card__face--back {
+  background: blue;
+  transform: rotateY(180deg);
+}
+
+
+</style>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+  var card = document.querySelector('.card');
+card.addEventListener( 'click', function() {
+  card.classList.toggle('is-flipped');
+});
+</script>
+
+{% next_button %}
+{% endblock %}

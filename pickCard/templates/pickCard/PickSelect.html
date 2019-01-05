@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Please pick your card by clicking it
+{% endblock %}
+
+{% block content %}
+<table>
+    <td><button class="otree-btn-next btn btn-primary next-button otree-next-button"></button></td>
+    <td><button class="otree-btn-next btn btn-primary next-button otree-next-button"></button></td>
+    <td><button class="otree-btn-next btn btn-primary next-button otree-next-button"></button></td>
+    <td><button class="otree-btn-next btn btn-primary next-button otree-next-button"></button></td>
+    <td><button class="otree-btn-next btn btn-primary next-button otree-next-button"></button></td>
+    <tr></tr>
+    <td><button class="otree-btn-next btn btn-primary next-button otree-next-button"></button></td>
+    <td><button class="otree-btn-next btn btn-primary next-button otree-next-button"></button></td>
+    <td><button class="otree-btn-next btn btn-primary next-button otree-next-button"></button></td>
+    <td><button class="otree-btn-next btn btn-primary next-button otree-next-button"></button></td>
+    <td><button class="otree-btn-next btn btn-primary next-button otree-next-button"></button></td>
+</table>
+
+<style>
+body { font-family: sans-serif; }
+.next-button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 100px 80px;
+  text-align: center;
+  font-size: 16px;
+}
+
+</style>
+{% endblock %}

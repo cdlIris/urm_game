@@ -1,0 +1,13 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Question {{ index }}
+{% endblock %}
+
+{% block content %}
+    <img src= "{% static pics_src %}" height="400"></td>
+    {% formfields %}
+    {% next_button %}
+
+{% endblock %}

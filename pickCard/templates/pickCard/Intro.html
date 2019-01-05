@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Introduction
+{% endblock %}
+
+{% block content %}
+<p>
+    On the next screen you see 10 cards. Each contains a statement about whether you have performed better or worse than the median participant in this session. However, only k (k>=5) of them are sincere, that is they contain the truth for sure. The others contain a random statement (that is the statement is true or false with 50% chance). And you will be asked to pick your card.
+</p>
+    {% next_button %}
+
+{% endblock %}

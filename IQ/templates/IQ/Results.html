@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Resutls of IQ Test
+{% endblock %}
+
+{% block content %}
+
+    You answered {{ correct }} questions correctly.
+    {% next_button %}
+{% endblock %}
+
+
