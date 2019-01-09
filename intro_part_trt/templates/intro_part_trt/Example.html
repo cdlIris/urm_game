@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Example
+{% endblock%}
+
+{% block content %}
+<style>
+    #quiz{
+        display: none;
+    }
+    #no_part{
+        display: none;
+    }
+</style>
+<p>
+    Now information in the following table applies.
+    <br>
+    <img src= "{% static "intro_part_trt/trt_case1.png" %}" height="400">
+</p>
+<br>
+    The following might be the balls drawn by the computer:
+
+    <br>
+    <img src= "{% static "intro_part/Urn_balls1.png" %}" height="100">
+<p>
+    <br>
+    4 red balls and 2 black balls are drawn.
+</p>
+
+<p>
+    We will ask you to guess the color of the urn.
+</p>
+<p>
+    {% formfield player.color %}
+</p>
+
+
+{% next_button %}
+{% endblock %}

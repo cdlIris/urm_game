@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+<p>
+    The whole experiment contains 40 rounds, equally divided into 4 Blocks. In the beginning of each Block, we will show you a table with information that applies to the following 10-round Block.
+</p>
+<p>
+    The table below means in Rounds 1-10, Q=0.7. In addition, the probability of Red Urn is 75%, and the probability of Black Urn is 25%.
+</p>
+<p><img src= "{% static "intro_part_trt/trt_sample.png" %}" height="400"></p>
+
+
+    {% next_button %}
+
+{% endblock %}

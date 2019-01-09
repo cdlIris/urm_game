@@ -1,0 +1,70 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    {% if player.round_number == 1 %}
+        Start of Block 1 <br>
+    {% elif player.round_number == 11 %}
+        Start of Block 2 <br>
+    {% elif player.round_number == 21 %}
+        Start of Block 3 <br>
+    {% elif player.round_number == 31 %}
+        Start of Block 4 <br>
+    {% else %}
+
+    {% endif %}
+{% block inner_title %}
+    Round {{ round_num }}
+{% endblock %}
+{% endblock %}
+
+{% block content %}
+<p>
+    This is a new round you have {{ Constants.endowment }} ECU
+</p>
+<p>
+    Now the following two cases are equally likely. And Red Urn and Black Urn are equally likely
+</p>
+<p>
+   <img src= "{% static chart %}" height="400">
+</p>
+<p>
+    The following are the balls drawn by the computer:
+<style>
+#circle {
+      width: 50px;
+      height: 50px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      background: black;
+}
+#Q_quiz{
+    display:none;
+}
+#no_part{
+    display:none;
+}
+
+</style>
+    <table>
+        <tr>
+            {% for c in ball_lst1 %}
+                <td><div id = 'circle' style= {{c}} ></div></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for c in ball_lst2 %}
+                <td><div id = 'circle' style= {{c}} ></div></td>
+            {% endfor %}
+        </tr>
+    </table>
+</p>
+
+<p>
+    {{ red }} red balls and {{ black }} black balls are drawn.
+</p>
+{% formfields %}
+
+{% next_button %}
+{% endblock %}

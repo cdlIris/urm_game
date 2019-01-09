@@ -45,7 +45,7 @@ class Player(BasePlayer):
                              label="Please answer the question:")
     q6 = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8], widget=widgets.RadioSelect,
                              label="Please answer the question:")
-    q7 = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8], widget=widgets.RadioSelect,
+    q7 = models.IntegerField(choices=[1, 2, 3, 4, 5, 6], widget=widgets.RadioSelect,
                              label="Please answer the question:")
     q8 = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8], widget=widgets.RadioSelect,
                              label="Please answer the question:")

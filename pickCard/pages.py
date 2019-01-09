@@ -15,7 +15,11 @@ class PickCard(Page):
 
 
 class Results(Page):
-    pass
+    def vars_for_template(self):
+        self.player.set_final_pay()
+        return {
+            'final_pay': self.player.final_payoff
+        }
 
 
 class PickSelect(Page):

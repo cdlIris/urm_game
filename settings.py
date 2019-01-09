@@ -15,8 +15,14 @@ SESSION_CONFIGS = [
     {
        'name': 'Urn_Game',
        'display_name': "Urn_Game",
-       'num_demo_participants': 1,
+       'num_demo_participants': 2,
        'app_sequence': ['intro_part','experiment_urn','IQ','pickCard'],
+    },
+    {
+       'name': 'Urn_Game_trt',
+       'display_name': "Urn_Game_trt",
+       'num_demo_participants': 2,
+       'app_sequence': ['intro_part_trt','experiment_urn_trt','IQ','pickCard'],
     },
 ]
 

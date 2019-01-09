@@ -2,7 +2,20 @@
 {% load otree static %}
 
 {% block title %}
+    {% if player.round_number == 1 %}
+        Start of Block 1 <br>
+    {% elif player.round_number == 11 %}
+        Start of Block 2 <br>
+    {% elif player.round_number == 21 %}
+        Start of Block 3 <br>
+    {% elif player.round_number == 31 %}
+        Start of Block 4 <br>
+    {% else %}
+
+    {% endif %}
+{% block inner_title %}
     Round {{ round_num }}
+{% endblock %}
 {% endblock %}
 
 {% block content %}
