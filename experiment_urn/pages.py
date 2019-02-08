@@ -25,7 +25,6 @@ class IntroQ(Page):
         red = 0
         black = 0
         pic = 'intro_part/Block' + str(self.player.cur_case) + '_unknown.jpg'
-        chart  = 'intro_part/case' + str(self.player.cur_case) + '.png'
 
         for i in range(0,6):
             if ball_lst[i] == 'red':
@@ -40,7 +39,6 @@ class IntroQ(Page):
             'red': red,
             'black': black,
             'round_num': self.round_number,
-            'chart': chart,
             'pic':pic
 
         }

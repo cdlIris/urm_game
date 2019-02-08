@@ -4,12 +4,12 @@
 
 {% block content %}
 <p>
-    The whole experiment contains 40 rounds, equally divided into 4 Blocks. In the beginning of each Block, we will show you a table with information that applies to the following 10-round Block.
+    The whole experiment contains 40 rounds, equally divided into 4 Blocks. The value of Q remains constant within each Block, but may vary between Blocks. In the beginning of each Block, we will show you a table with information that applies to the following Block.
 </p>
 <p>
-    The table below means in Rounds 1-10, Q=0.7. In addition, the probability of Red Urn is 75%, and the probability of Black Urn is 25%.
+    We will first show you a practice round, Round 0, which will not count towards your monetary payoff. The table below means in Round 0, Q=8. In addition, out of the 5 urns, 3 are red and 2 are black.
 </p>
-<p><img src= "{% static "intro_part_trt/trt_sample.png" %}" height="400"></p>
+<p><img src= "{% static "intro_part_trt/control_0.jpg" %}" height="400"></p>
 
 
     {% next_button %}

@@ -16,8 +16,6 @@ class Q1(Page):
         return {
             'pics_src': '1.png',
             'index': self.participant.vars['task_rounds']['1'],
-            'ans': Constants.ans[0],
-            'ncorrect': self.player.participant.vars['n_correct']
         }
 
     def before_next_page(self):
@@ -35,9 +33,7 @@ class Q2(Page):
     def vars_for_template(self):
         return {
             'pics_src': '2.png',
-            'ans': Constants.ans[1],
             'index': self.participant.vars['task_rounds']['2'],
-            'ncorrect': self.player.participant.vars['n_correct']
         }
 
     def before_next_page(self):
@@ -55,9 +51,7 @@ class Q3(Page):
     def vars_for_template(self):
         return {
             'pics_src': '3.png',
-            'ans': Constants.ans[2],
             'index': self.participant.vars['task_rounds']['3'],
-            'ncorrect': self.player.participant.vars['n_correct']
         }
 
     def before_next_page(self):
@@ -75,9 +69,7 @@ class Q4(Page):
     def vars_for_template(self):
         return {
             'pics_src': '4.png',
-            'ans': Constants.ans[3],
             'index': self.participant.vars['task_rounds']['4'],
-            'ncorrect': self.player.participant.vars['n_correct']
         }
 
     def before_next_page(self):
@@ -94,9 +86,7 @@ class Q5(Page):
     def vars_for_template(self):
         return {
             'pics_src': '5.png',
-            'ans': Constants.ans[4],
             'index': self.participant.vars['task_rounds']['5'],
-            'ncorrect': self.player.participant.vars['n_correct']
         }
 
     def before_next_page(self):
@@ -115,9 +105,7 @@ class Q6(Page):
     def vars_for_template(self):
         return {
             'pics_src': '6.png',
-            'ans': Constants.ans[5],
             'index': self.participant.vars['task_rounds']['6'],
-            'ncorrect': self.player.participant.vars['n_correct']
         }
 
     def before_next_page(self):
@@ -136,9 +124,7 @@ class Q7(Page):
     def vars_for_template(self):
         return {
             'pics_src': '7.png',
-            'ans': Constants.ans[6],
             'index': self.participant.vars['task_rounds']['7'],
-            'ncorrect': self.player.participant.vars['n_correct']
         }
 
     def before_next_page(self):
@@ -157,9 +143,7 @@ class Q8(Page):
     def vars_for_template(self):
         return {
             'pics_src': '8.png',
-            'ans': Constants.ans[7],
             'index': self.participant.vars['task_rounds']['8'],
-            'ncorrect': self.player.participant.vars['n_correct']
         }
 
     def before_next_page(self):
@@ -177,9 +161,7 @@ class Q9(Page):
     def vars_for_template(self):
         return {
             'pics_src': '9.png',
-            'ans': Constants.ans[8],
             'index': self.participant.vars['task_rounds']['9'],
-            'ncorrect': self.player.participant.vars['n_correct']
         }
 
     def before_next_page(self):
@@ -198,9 +180,7 @@ class Q10(Page):
     def vars_for_template(self):
         return {
             'pics_src': '10.png',
-            'ans': Constants.ans[9],
             'index': self.participant.vars['task_rounds']['10'],
-            'ncorrect': self.player.participant.vars['n_correct']
         }
 
     def before_next_page(self):

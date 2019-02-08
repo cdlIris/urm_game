@@ -31,3 +31,6 @@ class Player(BasePlayer):
 
     color = models.StringField(choices=['Red', 'Black'], widget=widgets.RadioSelectHorizontal,
                                label= "Please guess, which urn is used in this round?")
+
+    Q1 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,
+                            label="Is it possible that these six balls have been drawn from this urn?")

@@ -23,7 +23,7 @@ class IntroQ(Page):
         self.player.flip_coin() # flip the virtual coin
         red = 0
         black = 0
-        chart = 'intro_part_trt/trt_case' + str(self.player.cur_case) + '.png'
+        pic = 'intro_part_trt/control_' + str(self.player.cur_case) + '.jpg'
 
         for i in range(0,6):
             if ball_lst[i] == 'red':
@@ -38,7 +38,7 @@ class IntroQ(Page):
             'red': red,
             'black': black,
             'round_num': self.round_number,
-            'chart': chart
+            'pic': pic
 
         }
 

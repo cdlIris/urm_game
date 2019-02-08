@@ -36,12 +36,17 @@ class Example1(Page):
 
 class ExperimentStart(Page):
     pass
+
+class Q1(Page):
+    form_model = models.Player
+    form_fields = ['Q1']
+
 page_sequence = [
     GeneralInfo,
     Treatment1,
     Treatment1Cont,
     instructionRound,
-    # QQuiz,
     Example,
-    ExperimentStart
+    ExperimentStart,
+    Q1
 ]
