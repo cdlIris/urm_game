@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Question 2
+{% endblock%}
+
+{% block content %}
+<p>
+    In the experiment you will see “High Q” urns and “Low Q” urns.
+    The difference between them is as follows:
+    When a ball is drawn from a “High Q” urn it is more likely to have the same color as the urn than if it is drawn from a “Low Q” urn.
+
+</p>
+
+<div id="q2">
+    {% formfields %}
+</div>
+<div id="error" style="display:none;">
+    Please reconsider your choice.
+</div>
+
+
+<button id="next_btn" class="otree-btn-next btn btn-primary next-button otree-next-button" disabled>Confirm</button>
+<script>
+    document.getElementById('q2').addEventListener('change', function (e) {
+        if (e.target.value === "A") {
+            $("#error").hide();
+            $("#next_btn").removeAttr('disabled');
+        }
+        if (e.target.value === "B") {
+            $("#error").show();
+            $("#next_btn").attr("disabled", "disabled");
+        }
+    });
+</script>
+{% endblock %}

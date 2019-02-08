@@ -42,9 +42,11 @@ class Player(BasePlayer):
     scale1 = models.IntegerField(widget=widgets.Slider(attrs={'min': '0', 'max':'10'}), label="How sure are you? (Rate on a 10-point scale.)")
     scale2 = models.IntegerField(widget=widgets.Slider(attrs={'min': '0', 'max':'10'}), label="How sure are you? (Rate on a 10-point scale.)")
     final_payoff = models.IntegerField()
+    final_ECU = models.FloatField()
 
     def set_final_pay(self):
-        self.final_payoff = self.participant.vars['payoff'][random.randint(0,39)]
+        self.final_payoff = int(self.participant.vars['payoff'][random.randint(0,39)])
+        self.final_ECU = round(self.final_payoff * self.session.config['real_world_currency_per_point'],2)
 
     def set_k(self):
         self.k = random.randint(5,10)

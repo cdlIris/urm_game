@@ -1,0 +1,82 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Strategy Questions
+{% endblock %}
+
+{% block content %}
+<p>
+    The 10 urns that apply to the previous block are the following.
+</p>
+<p>
+   <img src= "{% static "intro_part/Round0_unknown.jpg" %}" height="400">
+</p>
+<p>
+    In each of the following cases, please select whether you would like to pay for the information of Q if it is not free.
+</p>
+<table>
+    <tr>
+        <th>
+            0 red balls and 6 black balls are drawn.&nbsp;&nbsp;&nbsp;&nbsp;
+        </th>
+        {% for choice in form.StrategyQ_1 %}
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;{{ choice }}&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        {% endfor %}
+    </tr>
+
+    <tr>
+        <th>
+            1 red balls and 5 black balls are drawn.&nbsp;&nbsp;&nbsp;&nbsp;
+        </th>
+        {% for choice in form.StrategyQ_2 %}
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;{{ choice }}&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>
+            2 red balls and 4 black balls are drawn.&nbsp;&nbsp;&nbsp;&nbsp;
+        </th>
+        {% for choice in form.StrategyQ_3 %}
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;{{ choice }}&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>
+            3 red balls and 3 black balls are drawn.&nbsp;&nbsp;&nbsp;&nbsp;
+        </th>
+        {% for choice in form.StrategyQ_4 %}
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;{{ choice }}&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>
+            4 red balls and 2 black balls are drawn.&nbsp;&nbsp;&nbsp;&nbsp;
+        </th>
+        {% for choice in form.StrategyQ_5 %}
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;{{ choice }}&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>
+            5 red balls and 1 black balls are drawn.&nbsp;&nbsp;&nbsp;&nbsp;
+        </th>
+        {% for choice in form.StrategyQ_6 %}
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;{{ choice }}&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        {% endfor %}
+    </tr>
+    <tr>
+        <th>
+            6 red balls and 0 black balls are drawn.&nbsp;&nbsp;&nbsp;&nbsp;
+        </th>
+        {% for choice in form.StrategyQ_7 %}
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;{{ choice }}&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        {% endfor %}
+    </tr>
+</table>
+<p>
+    <br>
+    Please click Next to start Round 1 of Block 1. All rounds from now on will have a chance to count towards your final payments.
+</p>
+{% next_button %}
+{% endblock %}

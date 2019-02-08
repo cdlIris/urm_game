@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Question 3
+{% endblock%}
+
+{% block content %}
+<p>
+    Look at the two urns in the picture.
+</p>
+<img src= "{% static "intro_part/comp3.jpg" %}" height="400">
+<br>
+
+<div id="q3">
+    {% formfields %}
+</div>
+<div id="error" style="display:none;">
+    Please reconsider your choice.
+</div>
+
+
+<button id="next_btn" class="otree-btn-next btn btn-primary next-button otree-next-button" disabled>Confirm</button>
+<script>
+    document.getElementById('q3').addEventListener('change', function (e) {
+        if (e.target.value === "B") {
+            $("#error").hide();
+            $("#next_btn").removeAttr('disabled');
+        }
+        if (e.target.value === "A") {
+            $("#error").show();
+            $("#next_btn").attr("disabled", "disabled");
+        }
+    });
+</script>
+{% endblock %}

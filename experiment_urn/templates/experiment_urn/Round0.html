@@ -2,66 +2,25 @@
 {% load otree static %}
 
 {% block title %}
-    {% if player.round_number == 1 %}
-        Start of Block 1 <br>
-    {% elif player.round_number == 11 %}
-        Start of Block 2 <br>
-    {% elif player.round_number == 21 %}
-        Start of Block 3 <br>
-    {% elif player.round_number == 31 %}
-        Start of Block 4 <br>
-    {% else %}
-
-    {% endif %}
-{% block inner_title %}
-    Round {{ round_num }}
-{% endblock %}
+    Round 0
 {% endblock %}
 
 {% block content %}
 <p>
-    This is a new round you have {{ Constants.endowment }} ECUs.
-    <br>
     The 10 urns for this block are the following.
 </p>
 <p>
-   <img src= "{% static pic %}" height="400">
+   <img src= "{% static "intro_part/Round0_unknown.jpg" %}" height="400">
 </p>
 <p>
     The following are the balls drawn by the computer:
-<style>
-#circle {
-      width: 50px;
-      height: 50px;
-      -webkit-border-radius: 25px;
-      -moz-border-radius: 25px;
-      border-radius: 25px;
-      background: black;
-}
-#Q_quiz{
-    display:none;
-}
-#no_part{
-    display:none;
-}
-
-</style>
-    <table>
-        <tr>
-            {% for c in ball_lst1 %}
-                <td><div id = 'circle' style= {{c}} ></div></td>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for c in ball_lst2 %}
-                <td><div id = 'circle' style= {{c}} ></div></td>
-            {% endfor %}
-        </tr>
-    </table>
+</p>
+<p>
+   <img src= "{% static "intro_part/round0_balls.png" %}" height="150">
 </p>
 
 <p>
-    {{ red }} red balls and {{ black }} black balls are drawn.
+    3 red balls and 3 black balls are drawn.
 </p>
  {{ form.free_Q.label }}<br>
 <input type="radio" id="free_Q_yes" name="free_Q" value="Yes"/> &nbsp; Yes <br>
@@ -78,7 +37,7 @@
         <br>
         For each row, please indicate whether you would know the value of Q at that price.
     </p>
-    <table style="width:100%">
+    <table style="width:100%;">
         <tr>
             <th>Pay 10 ECUs to know the value of Q</th>
             <th>Yes &nbsp;<input type="radio" id="o1a" name="quiz1" value="Yes" /></th>
@@ -136,6 +95,7 @@
 
 
     $(document).ready(function(){
+        $("#Q_quiz").hide();
         var select_No = function() {
             $("#o1B").prop("checked", true);
             $("#o2B").prop("checked", true);

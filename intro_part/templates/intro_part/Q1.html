@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Question 1
+{% endblock%}
+
+{% block content %}
+<p>
+    In this experiment all urns will contain exactly 10 balls. All balls are drawn with replacement.Look at the urn and at the six balls on the pictures.
+</p>
+<img src= "{% static "intro_part/comp1_urn.jpg" %}" height="300">
+<br>
+<img src= "{% static "intro_part/comp1_balls.jpg" %}" height="100">
+
+<div id="q1">
+    {% formfields %}
+</div>
+<div id="explanation" style="display:none;">
+    Although there are only 3 black balls in this urn, the draws are made with replacement. That means, for example, once a black ball is drawn, it is put back in the urn.
+</div>
+<div id="error" style="display:none;">
+    Please reconsider your choice.
+</div>
+
+
+<button id="next_btn" class="otree-btn-next btn btn-primary next-button otree-next-button" disabled>Confirm</button>
+<script>
+    document.getElementById('q1').addEventListener('change', function (e) {
+        if (e.target.value === "Yes") {
+            $("#explanation").show();
+            $("#error").hide();
+            $("#next_btn").removeAttr('disabled');
+        }
+        if (e.target.value === "No") {
+            $("#explanation").hide();
+            $("#error").show();
+            $("#next_btn").attr("disabled", "disabled");
+        }
+    });
+</script>
+{% endblock %}

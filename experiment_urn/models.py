@@ -19,8 +19,8 @@ class Constants(BaseConstants):
 
     endowment = 100
     ball_set_Q = [[0.7, 0.6], [0.9, 0.6], [0.7, 0.5], [0.9, 0.5]]
-    Urn_set = [[0.75, 0.25], [0.6, 0.4]]
-    cases = [[0.75, [0.7, 0.6]],[0.75, [0.9, 0.6]], [0.6, [0.7, 0.5]], [0.6, [0.9, 0.5]]]
+    Urn_set = [[0.8, 0.2], [0.6, 0.4]]
+    cases = [[0.8, [0.7, 0.6]],[0.8, [0.9, 0.6]], [0.6, [0.7, 0.5]], [0.6, [0.9, 0.5]]]
 
 
 class Subsession(BaseSubsession):
@@ -49,6 +49,8 @@ class Player(BasePlayer):
     charge = models.IntegerField()
     true_color = models.StringField()
     cur_case = models.IntegerField()
+    Q_known = models.IntegerField()
+    Urn_color = models.StringField()
 
     quiz1 = models.StringField(choices=['Yes','No'], widget=widgets.RadioSelect, blank=True)
     quiz2 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
@@ -60,6 +62,25 @@ class Player(BasePlayer):
     quiz8 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
     quiz9 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
     quiz10 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
+
+    StrategyQ_1 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelectHorizontal)
+    StrategyQ_2 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelectHorizontal,
+                                      label="1 red balls and 5 black balls are drawn.")
+    StrategyQ_3 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelectHorizontal,
+                                      label="2 red balls and 4 black balls are drawn.")
+    StrategyQ_4 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelectHorizontal,
+                                      label="3 red balls and 3 black balls are drawn.")
+    StrategyQ_5 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelectHorizontal,
+                                      label="4 red balls and 2 black balls are drawn.")
+    StrategyQ_6 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelectHorizontal,
+                                      label="5 red balls and 1 black balls are drawn.")
+    StrategyQ_7 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelectHorizontal,
+                                      label="6 red balls and 0 black balls are drawn.")
+
+    q1 = models.StringField(label='What were you thinking when making the decision about whether to have information about Q when it is not free?')
+    q2 = models.StringField(label="What made you choose to have information in some cases?")
+    q3 = models.StringField(label="What made you choose not to have information in other cases?")
+
 
     def flip_coin(self):
         self.coin_value = random.randint(0, 1) # 0 not free, 1 free
@@ -85,43 +106,54 @@ class Player(BasePlayer):
             if self.charge <= 10:
                 if 'Yes' in choice_lst:
                     self.payoff -= self.charge
+                    self.Q_known = 1
                     return 'The value of Q is ' + str(self.Q_value)
             if 10 < self.charge <= 20:
                 if 'Yes' in choice_lst[1:]:
                     self.payoff -= self.charge
+                    self.Q_known = 1
                     return 'The value of Q is ' + str(self.Q_value)
             if 20 < self.charge <= 30:
                 if 'Yes' in choice_lst[2:]:
                     self.payoff -= self.charge
+                    self.Q_known = 1
                     return 'The value of Q is ' + str(self.Q_value)
             if 30 < self.charge <= 40:
                 if 'Yes' in choice_lst[3:]:
                     self.payoff -= self.charge
+                    self.Q_known = 1
                     return 'The value of Q is ' + str(self.Q_value)
             if 40 < self.charge <= 50:
                 if 'Yes' in choice_lst[4:]:
                     self.payoff -= self.charge
+                    self.Q_known = 1
                     return 'The value of Q is ' + str(self.Q_value)
             if 50 < self.charge <= 60:
                 if 'Yes' in choice_lst[5:]:
                     self.payoff -= self.charge
+                    self.Q_known = 1
                     return 'The value of Q is ' + str(self.Q_value)
             if 60 < self.charge <= 70:
                 if 'Yes' in choice_lst[6:]:
                     self.payoff -= self.charge
+                    self.Q_known = 1
                     return 'The value of Q is ' + str(self.Q_value)
             if 70 < self.charge <= 80:
                 if 'Yes' in choice_lst[7:]:
                     self.payoff -= self.charge
+                    self.Q_known = 1
                     return 'The value of Q is ' + str(self.Q_value)
             if 80 < self.charge <= 90:
                 if 'Yes' in choice_lst[8:]:
                     self.payoff -= self.charge
+                    self.Q_known = 1
                     return 'The value of Q is ' + str(self.Q_value)
             if 90 < self.charge <= 100:
                 if 'Yes' in choice_lst[9]:
                     self.payoff -= self.charge
+                    self.Q_known = 1
                     return 'The value of Q is ' + str(self.Q_value)
+            self.Q_known = 0
             return 'Sorry.You can not see the value of Q. Because you did not pay the price.'
         return ''
 
@@ -136,9 +168,11 @@ class Player(BasePlayer):
         color = 0
         if draw <= 1 - Urn_prob:
             col_order = 1
+            self.Urn_color = 'red'
         col_order = ['red', 'black']
         if color == 1:
             col_order.reverse()
+            self.Urn_color = 'black'
         # print("cur_color_prob: ", Urn_prob, ' color: ', col_order[0])
         return col_order
 
@@ -160,6 +194,7 @@ class Player(BasePlayer):
         # print("round: ", self.round_number, 'cur_case: ', self.cur_case)
         color = self.select_color(self.cur_case - 1)
         Q = self.select_Q(self.cur_case - 1)
+        self.Q_value = Q
 
         balls_lst = []  # draw 6 balls with replacement
         for i in range(0, 6):
