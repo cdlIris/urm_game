@@ -39,24 +39,26 @@ class ExperimentStart(Page):
 
 
 class Q1(Page):
-    form_fields = ['Q1']
+    form_fields = ['Q1', 'correct_q1']
     form_model = models.Player
+
+
 
 
 class Q2(Page):
-    form_fields = ['Q2']
+    form_fields = ['Q2', 'correct_q2']
     form_model = models.Player
 
 class Q3(Page):
-    form_fields = ['Q3']
+    form_fields = ['Q3', 'correct_q3']
     form_model = models.Player
 
 class Q4(Page):
-    form_fields = ['Q4']
+    form_fields = ['Q4', 'correct_q4']
     form_model = models.Player
 
 class Q5(Page):
-    form_fields = ['Q5']
+    form_fields = ['Q5', 'correct_q5']
     form_model = models.Player
 
 page_sequence = [

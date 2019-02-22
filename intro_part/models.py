@@ -33,19 +33,24 @@ class Player(BasePlayer):
 
     Q1 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,
                             label="Is it possible that these six balls have been drawn from this urn?")
+    correct_q1 = models.StringField()
     Q2 = models.StringField(choices=[("A", "“High Q” urns have more balls of the same color as the urn than “Low Q” urns."),
                                      ("B", "“High Q” urns have fewer balls of the same color as the urn than “Low Q” urns.")],
                             label="Which statement is true?", widget=widgets.RadioSelect)
+    correct_q2 = models.StringField()
     Q3 = models.StringField(
         choices=[('A', "Drawing two balls of different color is more likely in the “High Precision” urn."),
                  ('B', "Drawing two balls of different color is more likely in the “Low Precision” urn.")],
         label="Which statement is true?", widget=widgets.RadioSelect)
+    correct_q3 = models.StringField()
     Q4 = models.StringField(
         choices=[('A', "It is more likely that these six balls have been drawn from the “High Precision” urn."),
                  ('B', "It is more likely that these six balls have been drawn from the “Low Precision” urn.")],
         label="Which statement is true?", widget=widgets.RadioSelect)
+    correct_q4 = models.StringField()
     Q5 = models.StringField(
         choices=[('A', "It is more likely that these six balls have been drawn from the “High Precision” urn."),
                  ('B', "It is more likely that these six balls have been drawn from the “Low Precision” urn.")],
         label="Which statement is true?", widget=widgets.RadioSelect)
+    correct_q5 = models.StringField()
 

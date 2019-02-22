@@ -18,6 +18,7 @@ class Constants(BaseConstants):
     num_rounds = 10
     tasks = ['1','2', '3','4', '5','6', '7','8', '9','10']
     ans = [5, 8, 2, 6, 8, 5, 4, 6, 4, 4]
+    prize = 10
     time = 20
 
 class Subsession(BaseSubsession):
@@ -61,6 +62,7 @@ class Player(BasePlayer):
     n_correct = models.IntegerField()
     q1 = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8], widget=widgets.RadioSelect,
                              label="Please answer the question:")
+    correct_q = models.BooleanField()
     q2 = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8], widget=widgets.RadioSelect,
                              label="Please answer the question:")
     q3 = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8], widget=widgets.RadioSelect,
@@ -79,4 +81,3 @@ class Player(BasePlayer):
                              label="Please answer the question:")
     q10 = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8], widget=widgets.RadioSelect,
                               label="Please answer the question:")
-

@@ -18,10 +18,10 @@
 </p>
 <img src= "{% static "intro_part/comp4_balls.jpg" %}" height="150">
 <br>
-
 <div id="q4">
-    {% formfields %}
+    {% formfield player.Q4 %}
 </div>
+<input type="hidden" name="correct_q4" id="id_correct_q4" value="0"/>
 <div id="error" style="display:none;">
     Please reconsider your choice.
 </div>
@@ -30,6 +30,9 @@
 <button id="next_btn" class="otree-btn-next btn btn-primary next-button otree-next-button" disabled>Confirm</button>
 <script>
     document.getElementById('q4').addEventListener('change', function (e) {
+    if ($("#id_correct_q4").val() == 0){
+            $("#id_correct_q4").val(e.target.value);
+        }
         if (e.target.value === "A") {
             $("#error").hide();
             $("#next_btn").removeAttr('disabled');

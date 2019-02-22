@@ -14,8 +14,9 @@
 <img src= "{% static "intro_part/comp1_balls.jpg" %}" height="100">
 
 <div id="q1">
-    {% formfields %}
+    {% formfield player.Q1 %}
 </div>
+<input type="hidden" name="correct_q1" id="id_correct_q1" value="0"/>
 <div id="explanation" style="display:none;">
     Although there are only 3 black balls in this urn, the draws are made with replacement. That means, for example, once a black ball is drawn, it is put back in the urn.
 </div>
@@ -27,6 +28,9 @@
 <button id="next_btn" class="otree-btn-next btn btn-primary next-button otree-next-button" disabled>Confirm</button>
 <script>
     document.getElementById('q1').addEventListener('change', function (e) {
+        if ($("#id_correct_q1").val() == 0){
+            $("#id_correct_q1").val(e.target.value);
+        }
         if (e.target.value === "Yes") {
             $("#explanation").show();
             $("#error").hide();

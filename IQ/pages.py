@@ -21,6 +21,9 @@ class Q1(Page):
     def before_next_page(self):
         if self.player.q1 == Constants.ans[0]:
             self.player.participant.vars['n_correct'] += 1
+            self.player.correct_q = True
+        else:
+            self.player.correct_q = False
 
 class Q2(Page):
     form_model = models.Player
@@ -39,6 +42,10 @@ class Q2(Page):
     def before_next_page(self):
         if self.player.q2 == Constants.ans[1]:
             self.player.participant.vars['n_correct'] += 1
+            self.player.correct_q = True
+        else:
+            self.player.correct_q = False
+
 
 class Q3(Page):
     form_model = models.Player
@@ -57,6 +64,10 @@ class Q3(Page):
     def before_next_page(self):
         if self.player.q3 == Constants.ans[2]:
             self.player.participant.vars['n_correct'] += 1
+            self.player.correct_q = True
+        else:
+            self.player.correct_q = False
+
 
 class Q4(Page):
     form_model = models.Player
@@ -75,6 +86,10 @@ class Q4(Page):
     def before_next_page(self):
         if self.player.q4 == Constants.ans[3]:
             self.player.participant.vars['n_correct'] += 1
+            self.player.correct_q = True
+        else:
+            self.player.correct_q = False
+
 
 class Q5(Page):
     form_model = models.Player
@@ -92,6 +107,10 @@ class Q5(Page):
     def before_next_page(self):
         if self.player.q5 == Constants.ans[4]:
             self.player.participant.vars['n_correct'] += 1
+            self.player.correct_q = True
+        else:
+            self.player.correct_q = False
+
 
 class Q6(Page):
     form_model = models.Player
@@ -111,6 +130,9 @@ class Q6(Page):
     def before_next_page(self):
         if self.player.q6 == Constants.ans[5]:
             self.player.participant.vars['n_correct'] += 1
+            self.player.correct_q = True
+        else:
+            self.player.correct_q = False
 
 
 class Q7(Page):
@@ -130,6 +152,9 @@ class Q7(Page):
     def before_next_page(self):
         if self.player.q7 == Constants.ans[6]:
             self.player.participant.vars['n_correct'] += 1
+            self.player.correct_q = True
+        else:
+            self.player.correct_q = False
 
 
 class Q8(Page):
@@ -149,6 +174,10 @@ class Q8(Page):
     def before_next_page(self):
         if self.player.q8 == Constants.ans[7]:
             self.player.participant.vars['n_correct'] += 1
+            self.player.correct_q = True
+        else:
+            self.player.correct_q = False
+
 
 class Q9(Page):
     form_model = models.Player
@@ -167,6 +196,9 @@ class Q9(Page):
     def before_next_page(self):
         if self.player.q9 == Constants.ans[8]:
             self.player.participant.vars['n_correct'] += 1
+            self.player.correct_q = True
+        else:
+            self.player.correct_q = False
 
 
 class Q10(Page):
@@ -186,6 +218,9 @@ class Q10(Page):
     def before_next_page(self):
         if self.player.q10 == Constants.ans[9]:
             self.player.participant.vars['n_correct'] += 1
+            self.player.correct_q = True
+        else:
+            self.player.correct_q = False
 
 
 class Results(Page):
@@ -194,6 +229,7 @@ class Results(Page):
 
     def vars_for_template(self):
         self.player.n_correct = self.player.participant.vars['n_correct']
+        self.player.payoff = self.player.n_correct * Constants.prize
         return {
             'correct': self.player.participant.vars['n_correct']
         }

@@ -52,6 +52,7 @@ class GuessColor(Page):
         ball_lst = self.player.participant.vars['6balls']
         Q_message = self.player.set_payoff()
         pic = 'intro_part/Block' + str(self.player.cur_case) + '_unknown.jpg'
+        print("Q message ", Q_message)
         if Q_message[0] == 'T':
             if self.player.Q_value == Constants.cases[self.player.cur_case-1][1][0]:
                 pic = 'intro_part/Block' + str(self.player.cur_case) + '_H.jpg'
