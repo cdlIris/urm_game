@@ -2,7 +2,7 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 from . import models
-
+import random
 
 class Q1(Page):
     form_model = models.Player
@@ -229,10 +229,12 @@ class Results(Page):
 
     def vars_for_template(self):
         self.player.n_correct = self.player.participant.vars['n_correct']
+        self.player.payoff = 0
         self.player.payoff = self.player.n_correct * Constants.prize
         return {
             'correct': self.player.participant.vars['n_correct']
         }
+
 
 
 class IntroIQ(Page):
@@ -246,7 +248,26 @@ class demographic(Page):
     def is_displayed(self):
         if self.round_number == 1:
             self.player.participant.vars['n_correct'] = 0
+
         return self.round_number == 1
+
+
+class FinalResult(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
+    def vars_for_template(self):
+        random.shuffle(self.player.participant.vars['payoff'])
+        urn = self.player.participant.vars['payoff'][0] + self.player.participant.vars['comprehension']
+        urn = round(float(urn) * self.session.config['real_world_currency_per_point'],2),
+        IQ = round(float(self.player.payoff) * self.session.config['real_world_currency_per_point'],2)
+        self.player.final_real = urn + IQ + Constants.show_up
+        return {
+            'Urn': urn,
+            'IQ': IQ,
+            'show_up': Constants.show_up
+        }
+
 page_sequence = [
     demographic,
     IntroIQ,
@@ -260,4 +281,5 @@ page_sequence = [
     Q8,
     Q9,
     Q10,
+    FinalResult
 ]

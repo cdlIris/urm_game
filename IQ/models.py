@@ -20,6 +20,7 @@ class Constants(BaseConstants):
     ans = [5, 8, 2, 6, 8, 5, 4, 6, 4, 4]
     prize = 10
     time = 20
+    show_up = 5
 
 class Subsession(BaseSubsession):
     def creating_session(self):
@@ -60,6 +61,7 @@ class Player(BasePlayer):
     econ_course = models.IntegerField(label="7.How many college-level economics courses have you taken?")
 
     n_correct = models.IntegerField()
+    final_real = models.FloatField()
     q1 = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8], widget=widgets.RadioSelect,
                              label="Please answer the question:")
     correct_q = models.BooleanField()

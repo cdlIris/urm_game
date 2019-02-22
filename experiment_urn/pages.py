@@ -52,7 +52,7 @@ class GuessColor(Page):
         ball_lst = self.player.participant.vars['6balls']
         Q_message = self.player.set_payoff()
         pic = 'intro_part/Block' + str(self.player.cur_case) + '_unknown.jpg'
-        print("Q message ", Q_message)
+        print("****************************************Q message ", Q_message)
         if Q_message[0] == 'T':
             if self.player.Q_value == Constants.cases[self.player.cur_case-1][1][0]:
                 pic = 'intro_part/Block' + str(self.player.cur_case) + '_H.jpg'
@@ -106,13 +106,14 @@ class Round0_Guess(Page):
     def vars_for_template(self):
         self.player.coin_value = random.randint(0,1)
         Q_random = [0.8, 0.5]
+        random.shuffle(Q_random)
         self.player.Q_value = Q_random[0]
         Q_message = self.player.set_payoff()
         Q_pic = 'intro_part/Round0_unknown.jpg'
         self.player.payoff = 0
 
-        random.shuffle(Q_random)
         if Q_message[0] == 'T':
+            print("before pic ", Q_random[0])
             if Q_random[0] == 0.8:
                 Q_pic = 'intro_part/Round0_H.jpg'
             else:
@@ -123,7 +124,7 @@ class Round0_Guess(Page):
             'balls_num': range(0, 6),
             'round_num': self.round_number,
             'Q_message': Q_message,
-            'Q_pic': Q_pic
+            'Q_pic': Q_pic,
         }
 
 

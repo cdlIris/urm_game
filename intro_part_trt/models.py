@@ -34,3 +34,5 @@ class Player(BasePlayer):
 
     Q1 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,
                             label="Is it possible that these six balls have been drawn from this urn?")
+
+    correct_q1 = models.StringField()

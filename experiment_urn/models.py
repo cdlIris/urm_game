@@ -91,6 +91,7 @@ class Player(BasePlayer):
     def set_payoff(self):
         self.payoff = Constants.endowment
         self.charge = 0
+        message = 'The value of Q is ' + str(int(self.Q_value*10))
         if self.round_number == 1:
             self.participant.vars['payoff'] = []
         if self.free_Q == 'No': # not see Q
@@ -98,7 +99,7 @@ class Player(BasePlayer):
             return ''
         if self.free_Q == 'Yes' and self.coin_value == 1: # see Q free
             self.payoff = Constants.endowment
-            return 'The value of Q is ' + str(int(self.Q_value)*10)
+            return 'The value of Q is ' + str(int(self.Q_value*10))
         if self.free_Q == 'Yes' and self.coin_value == 0: # see Q not free
             choice_lst = [self.quiz1, self.quiz2, self.quiz3, self.quiz4, self.quiz5, self.quiz6, self.quiz7, self.quiz8,
                           self.quiz9, self.quiz10]
@@ -107,52 +108,52 @@ class Player(BasePlayer):
                 if 'Yes' in choice_lst:
                     self.payoff -= self.charge
                     self.Q_known = 1
-                    return 'The value of Q is ' + str(int(self.Q_value)*10)
+                    return message
             if 10 < self.charge <= 20:
                 if 'Yes' in choice_lst[1:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
-                    return 'The value of Q is ' + str(int(self.Q_value)*10)
+                    return message
             if 20 < self.charge <= 30:
                 if 'Yes' in choice_lst[2:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
-                    return 'The value of Q is ' + str(int(self.Q_value)*10)
+                    return message
             if 30 < self.charge <= 40:
                 if 'Yes' in choice_lst[3:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
-                    return 'The value of Q is ' + str(int(self.Q_value)*10)
+                    return message
             if 40 < self.charge <= 50:
                 if 'Yes' in choice_lst[4:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
-                    return 'The value of Q is ' + str(int(self.Q_value)*10)
+                    return message
             if 50 < self.charge <= 60:
                 if 'Yes' in choice_lst[5:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
-                    return 'The value of Q is ' + str(int(self.Q_value)*10)
+                    return message
             if 60 < self.charge <= 70:
                 if 'Yes' in choice_lst[6:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
-                    return 'The value of Q is ' + str(int(self.Q_value)*10)
+                    return message
             if 70 < self.charge <= 80:
                 if 'Yes' in choice_lst[7:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
-                    return 'The value of Q is ' + str(int(self.Q_value)*10)
+                    return message
             if 80 < self.charge <= 90:
                 if 'Yes' in choice_lst[8:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
-                    return 'The value of Q is ' + str(int(self.Q_value)*10)
+                    return message
             if 90 < self.charge <= 100:
                 if 'Yes' in choice_lst[9]:
                     self.payoff -= self.charge
                     self.Q_known = 1
-                    return 'The value of Q is ' + str(int(self.Q_value)*10)
+                    return message
             self.Q_known = 0
             return 'Sorry.You can not see the value of Q. Because you did not pay the price.'
         return ''
