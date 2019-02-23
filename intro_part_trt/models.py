@@ -36,3 +36,6 @@ class Player(BasePlayer):
                             label="Is it possible that these six balls have been drawn from this urn?")
 
     correct_q1 = models.StringField()
+
+    def set_payoff(self):
+        self.payoff = 20

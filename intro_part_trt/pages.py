@@ -45,7 +45,8 @@ class Q1(Page):
     def before_next_page(self):
         if self.player.Q1 == 'Yes':
             self.player.correct_q1 = 'True'
-            self.player.payoff = 20
+            self.player.set_payoff()
+            
         else:
             self.player.correct_q1 = 'False'
         self.player.participant.vars['comprehension'] = self.player.payoff
