@@ -45,7 +45,6 @@ class Q1(Page):
     def before_next_page(self):
         if self.player.Q1 == 'Yes':
             self.player.correct_q1 = 'True'
-            self.payoff = 20
         else:
             self.player.correct_q1 = 'False'
 
@@ -56,7 +55,6 @@ class Q2(Page):
     def before_next_page(self):
         if self.player.Q2 == 'A':
             self.player.correct_q2 = 'True'
-            self.player.payoff += 20
         else:
             self.player.correct_q2 = 'False'
 
@@ -67,7 +65,6 @@ class Q3(Page):
     def before_next_page(self):
         if self.player.Q2 == 'B':
             self.player.correct_q3 = 'True'
-            self.payoff += 20
         else:
             self.player.correct_q3 = 'False'
 
@@ -78,7 +75,6 @@ class Q4(Page):
     def before_next_page(self):
         if self.player.Q2 == 'A':
             self.player.correct_q4 = 'True'
-            self.payoff += 20
         else:
             self.player.correct_q4 = 'False'
 class Q5(Page):
@@ -88,10 +84,11 @@ class Q5(Page):
     def before_next_page(self):
         if self.player.Q2 == 'B':
             self.player.correct_q5 = 'True'
-            self.payoff += 20
         else:
             self.player.correct_q5 = 'False'
+        self.player.set_payoff()
         self.player.participant.vars['comprehension'] = self.player.payoff
+
 
 
 

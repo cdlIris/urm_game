@@ -54,3 +54,17 @@ class Player(BasePlayer):
         label="Which statement is true?", widget=widgets.RadioSelect)
     correct_q5 = models.StringField()
 
+    def set_payoff(self):
+        self.payoff = 0
+        if self.correct_q1:
+            self.payoff += 20
+        if self.correct_q2:
+            self.payoff += 20
+        if self.correct_q3:
+            self.payoff += 20
+        if self.correct_q4:
+            self.payoff += 20
+        if self.correct_q5:
+            self.payoff += 20
+
+
