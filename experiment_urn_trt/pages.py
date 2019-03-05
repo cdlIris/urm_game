@@ -31,6 +31,7 @@ class IntroQ(Page):
             else:
                 black += 1
             ball_lst[i] = 'background:' + ball_lst[i] + ';'
+        self.player.red = red
         return {
             'balls_num': range(0, 6),
             'ball_lst1': ball_lst[0:3],

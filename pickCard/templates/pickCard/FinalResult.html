@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+  Payment Information
+{% endblock %}
+
+{% block content %}
+<p>
+    Your payment from this experiment consists of the following parts:
+<br>
+    Show up fee: € {{show_up}}<br>
+    Urn game: € {{Urn}} <br>
+    IQ game: € {{IQ}}
+</p>
+{% endblock %}
+
+

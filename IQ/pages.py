@@ -231,6 +231,7 @@ class Results(Page):
         self.player.n_correct = self.player.participant.vars['n_correct']
         self.player.payoff = 0
         self.player.payoff = self.player.n_correct * Constants.prize
+        self.player.participant.vars['IQ'] = self.player.payoff
         return {
             'correct': self.player.participant.vars['n_correct']
         }
@@ -252,25 +253,6 @@ class demographic(Page):
         return self.round_number == 1
 
 
-class FinalResult(Page):
-    def is_displayed(self):
-        return self.round_number == Constants.num_rounds
-
-    def vars_for_template(self):
-        random.shuffle(self.player.participant.vars['payoff'])
-        urn = self.player.participant.vars['payoff'][0] + self.player.participant.vars['comprehension']
-        urn = round(float(urn) * self.session.config['real_world_currency_per_point'],2)
-        self.player.n_correct = self.player.participant.vars['n_correct']
-        self.player.set_payoff()
-
-        IQ = round(float(self.player.payoff) * self.session.config['real_world_currency_per_point'], 2)
-        self.player.final_real = urn + IQ + Constants.show_up
-        return {
-            'Urn': urn,
-            'IQ': IQ,
-            'show_up': Constants.show_up
-        }
-
 page_sequence = [
     demographic,
     IntroIQ,
@@ -284,5 +266,5 @@ page_sequence = [
     Q8,
     Q9,
     Q10,
-    FinalResult
+    Results
 ]

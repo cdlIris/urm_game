@@ -37,6 +37,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    red = models.IntegerField()
     guess_color = models.StringField(choices=['red', 'black'], widget=widgets.RadioSelect,
                                      label="Please guess, which urn is used in this round?")
     Q_value = models.FloatField()

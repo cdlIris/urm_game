@@ -18,6 +18,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
 
+    show_up = 5
 
 class Subsession(BaseSubsession):
     def creating_session(self):

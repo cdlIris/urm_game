@@ -84,6 +84,3 @@ class Player(BasePlayer):
     q10 = models.IntegerField(choices=[1, 2, 3, 4, 5, 6, 7, 8], widget=widgets.RadioSelect,
                               label="Please answer the question:")
 
-    def set_payoff(self):
-        self.payoff = 0
-        self.payoff = self.n_correct * Constants.prize
