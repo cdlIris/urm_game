@@ -38,16 +38,11 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     k = models.IntegerField()
     content = models.StringField()
-    believe1 = models.StringField(choices=['Yes','No'], widget=widgets.RadioSelect,label="Do you believe that your card was a sincere card or a random card? ")
+    believe1 = models.StringField(choices=['Sincere','Random'], widget=widgets.RadioSelect,label="Do you believe that your card was a sincere card or a random card? ")
     believe2 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect, label=" After having observed the statement of your card, do you believe that you have performed better than the median?")
     scale1 = models.IntegerField(widget=widgets.Slider(attrs={'min': '0', 'max':'10'}), label="How sure are you? (Rate on a 10-point scale.)")
     scale2 = models.IntegerField(widget=widgets.Slider(attrs={'min': '0', 'max':'10'}), label="How sure are you? (Rate on a 10-point scale.)")
-    final_payoff = models.IntegerField()
-    final_ECU = models.FloatField()
-
-    def set_final_pay(self):
-        self.final_payoff = int(self.participant.vars['payoff'][random.randint(0,39)])
-        self.final_ECU = round(self.final_payoff * self.session.config['real_world_currency_per_point'],2)
+    final_payoff = models.FloatField()
 
     def set_k(self):
         self.k = random.randint(5,10)

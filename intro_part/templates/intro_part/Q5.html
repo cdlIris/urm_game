@@ -28,7 +28,9 @@
 <div id="error" style="display:none;">
     Please reconsider your choice.
 </div>
-
+<div id="explanation" style="display:none;">
+    This is correct.
+</div>
 
 <button id="next_btn" class="otree-btn-next btn btn-primary next-button otree-next-button" disabled>Confirm</button>
 <script>
@@ -38,10 +40,12 @@
         }
         if (e.target.value === "B") {
             $("#error").hide();
+            $("#explanation").show();
             $("#next_btn").removeAttr('disabled');
         }
         if (e.target.value === "A") {
             $("#error").show();
+            $("#explanation").hide();
             $("#next_btn").attr("disabled", "disabled");
         }
     });

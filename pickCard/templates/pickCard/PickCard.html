@@ -7,19 +7,18 @@
 {% block content %}
 <div class="scene scene--card">
   <div class="card">
-    <div class="card__face card__face--front"></div>
-    <div class="card__face card__face--back">{{ msg }}</div>
+    <div class="card__face card__face--front"><br><br><br>Click the card to flip!</div>
+    <div class="card__face card__face--back"><br><br>In the short quiz, <br>{{ msg }}</div>
   </div>
 </div>
-<p>Click card to flip.</p>
 
 {% formfields %}
 <style>
 body { font-family: sans-serif; }
 
 .scene {
-  width: 200px;
-  height: 260px;
+  width: 300px;
+  height: 200px;
   border: 1px solid #CCC;
   margin: 40px 400px;
   perspective: 600px;
@@ -43,11 +42,12 @@ body { font-family: sans-serif; }
   position: absolute;
   width: 100%;
   height: 100%;
-  line-height: 260px;
+  line-height: 30px;
   color: white;
   text-align: center;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 14px;
+
   backface-visibility: hidden;
 }
 

@@ -76,7 +76,9 @@ Strategy Questions
 </table>
 <p>
     <br>
+    {% if player.round_number == 1 %}
     Please click Next to start Round 1 of Block 1. All rounds from now on will have a chance to count towards your final payments.
+    {% endif %}
 </p>
 {% next_button %}
 {% endblock %}

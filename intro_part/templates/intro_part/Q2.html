@@ -17,6 +17,9 @@
     {% formfield player.Q2 %}
 </div>
 <input type="hidden" name="correct_q2" id="id_correct_q2" value="0"/>
+<div id="explanation" style="display:none;">
+    This is correct.
+</div>
 <div id="error" style="display:none;">
     Please reconsider your choice.
 </div>
@@ -29,11 +32,13 @@
             $("#id_correct_q2").val(e.target.value);
         }
         if (e.target.value === "A") {
+            $("#explanation").show();
             $("#error").hide();
             $("#next_btn").removeAttr('disabled');
         }
         if (e.target.value === "B") {
             $("#error").show();
+            $("#explanation").hide();
             $("#next_btn").attr("disabled", "disabled");
         }
     });

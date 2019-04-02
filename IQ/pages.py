@@ -24,6 +24,7 @@ class Q1(Page):
             self.player.correct_q = True
         else:
             self.player.correct_q = False
+        self.player.n_correct = self.player.participant.vars['n_correct']
 
 class Q2(Page):
     form_model = models.Player
@@ -39,13 +40,14 @@ class Q2(Page):
             'index': self.participant.vars['task_rounds']['2'],
         }
 
+
     def before_next_page(self):
         if self.player.q2 == Constants.ans[1]:
             self.player.participant.vars['n_correct'] += 1
             self.player.correct_q = True
         else:
             self.player.correct_q = False
-
+        self.player.n_correct = self.player.participant.vars['n_correct']
 
 class Q3(Page):
     form_model = models.Player
@@ -67,7 +69,7 @@ class Q3(Page):
             self.player.correct_q = True
         else:
             self.player.correct_q = False
-
+        self.player.n_correct = self.player.participant.vars['n_correct']
 
 class Q4(Page):
     form_model = models.Player
@@ -89,6 +91,7 @@ class Q4(Page):
             self.player.correct_q = True
         else:
             self.player.correct_q = False
+        self.player.n_correct = self.player.participant.vars['n_correct']
 
 
 class Q5(Page):
@@ -110,6 +113,7 @@ class Q5(Page):
             self.player.correct_q = True
         else:
             self.player.correct_q = False
+        self.player.n_correct = self.player.participant.vars['n_correct']
 
 
 class Q6(Page):
@@ -133,6 +137,7 @@ class Q6(Page):
             self.player.correct_q = True
         else:
             self.player.correct_q = False
+        self.player.n_correct = self.player.participant.vars['n_correct']
 
 
 class Q7(Page):
@@ -155,6 +160,7 @@ class Q7(Page):
             self.player.correct_q = True
         else:
             self.player.correct_q = False
+        self.player.n_correct = self.player.participant.vars['n_correct']
 
 
 class Q8(Page):
@@ -177,6 +183,7 @@ class Q8(Page):
             self.player.correct_q = True
         else:
             self.player.correct_q = False
+        self.player.n_correct = self.player.participant.vars['n_correct']
 
 
 class Q9(Page):
@@ -199,6 +206,7 @@ class Q9(Page):
             self.player.correct_q = True
         else:
             self.player.correct_q = False
+        self.player.n_correct = self.player.participant.vars['n_correct']
 
 
 class Q10(Page):
@@ -221,6 +229,11 @@ class Q10(Page):
             self.player.correct_q = True
         else:
             self.player.correct_q = False
+
+        self.player.n_correct = self.player.participant.vars['n_correct']
+        self.player.payoff = 0
+        self.player.payoff = self.player.n_correct * Constants.prize
+        self.player.participant.vars['IQ'] = self.player.payoff
 
 
 class Results(Page):
@@ -266,5 +279,5 @@ page_sequence = [
     Q8,
     Q9,
     Q10,
-    Results
+    # Results
 ]

@@ -30,6 +30,12 @@ SESSION_CONFIGS = [
        'num_demo_participants': 1,
        'app_sequence': ['IQ'],
     },
+    {
+       'name': 'pickCard',
+       'display_name': "PickCard",
+       'num_demo_participants': 1,
+       'app_sequence': ['pickCard'],
+    },
 ]
 
 
