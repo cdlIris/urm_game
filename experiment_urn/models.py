@@ -4,7 +4,6 @@ from otree.api import (
 )
 import random
 import numpy as np
-
 author = 'Danlin Chen'
 
 doc = """
@@ -29,7 +28,6 @@ class Subsession(BaseSubsession):
             for p in self.get_players():
                 p.participant.vars['case_lst'] = [1,2,3,4]
                 random.shuffle(p.participant.vars['case_lst'])
-                # print("p ", p.id_in_group, " case lst; ", p.participant.vars['case_lst'])
 
 
 class Group(BaseGroup):
@@ -161,22 +159,18 @@ class Player(BasePlayer):
         return ''
 
     def select_Q(self,case):
-        cur_q = np.random.choice(np.arange(0, 2), p=[0.5, 0.5])  # 0 case 1 (8,2), 1 case 2 (6,4)
-        # print("cur_case: ", case, "cur_q: ", Constants.cases[case][1][cur_q])
+        cur_q = np.random.choice(np.arange(0, 2), p=[0.5, 0.5])  # 0 the first rate, 1 the second rate
         return Constants.cases[case][1][cur_q]
 
     def select_color(self, case):  # red urn / black urn
+        # 1. prob of red urn
         Urn_prob = Constants.cases[case][0]
-        draw = random.random()
-        color = 0
-        if draw <= 1 - Urn_prob:
-            col_order = 1
-            self.Urn_color = 'red'
+        # 2. get which color to draw, if 0 then red, if 1 then black
+        draw = ['red'] * int(Urn_prob*10) + ['black'] * int((1-Urn_prob)*10)
+        random.shuffle(draw)
         col_order = ['red', 'black']
-        if color == 1:
+        if draw[0] == 'black':
             col_order.reverse()
-            self.Urn_color = 'black'
-        # print("cur_color_prob: ", Urn_prob, ' color: ', col_order[0])
         return col_order
 
     def draw_balls(self):
@@ -184,25 +178,23 @@ class Player(BasePlayer):
             self.participant.vars['Q_lst'] = []
             self.participant.vars['color_lst'] = []
 
-        cur_blk = 0
-
-        if 11 <= self.round_number <= 20:
-            cur_blk = 1
-        if 21 <= self.round_number <= 30:
-            cur_blk = 2
-        if 31 <= self.round_number <= 40:
-            cur_blk = 3
-
+        # 1. get current block (round block)
+        cur_blk = int((self.round_number - 1)/10)
+        # 2. get current case by block [1,2,3,4]
         self.cur_case = self.participant.vars['case_lst'][cur_blk]
-        # print("round: ", self.round_number, 'cur_case: ', self.cur_case)
-        color = self.select_color(self.cur_case - 1)
+        # 3. get color
+        color_order = self.select_color(self.cur_case - 1)
+        # 4. get Q
         Q = self.select_Q(self.cur_case - 1)
-        self.Q_value = Q
 
-        balls_lst = []  # draw 6 balls with replacement
+        balls_lst = []
+        # 5. draw 6 balls with replacement
         for i in range(0, 6):
-            balls_lst.append(np.random.choice(np.array(color), p=[Q, 1 - Q]))
+            balls_lst.append(np.random.choice(np.array(color_order), p=[Q, 1 - Q]))
 
+        # 6. record ball list, Q list, color list (player's and session-wide)
+        self.Urn_color = color_order[0]
+        self.Q_value = Q
         self.participant.vars['6balls'] = balls_lst
         self.participant.vars['Q_lst'].append(Q)
-        self.participant.vars['color_lst'].append([color[0]])
+        self.participant.vars['color_lst'].append(self.Urn_color)

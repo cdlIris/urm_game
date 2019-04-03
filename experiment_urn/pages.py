@@ -146,6 +146,11 @@ class Round_StrategyQ(Page):
     def is_displayed(self):
         return self.round_number in [10,20,30,40]
 
+    def vars_for_template(self):
+        pic = 'intro_part/Block' + str(self.player.cur_case) + '_unknown.jpg'
+        return {
+            'pic': pic
+        }
 
 class Questions(Page):
     form_fields = ['q1','q2','q3']
