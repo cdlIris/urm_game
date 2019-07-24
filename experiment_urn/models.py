@@ -77,9 +77,8 @@ class Player(BasePlayer):
     StrategyQ_7 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelectHorizontal,
                                       label="6 red balls and 0 black balls are drawn.")
 
-    q1 = models.StringField(label='What were you thinking when making the decision about whether to have information about Q when it is not free?')
-    q2 = models.StringField(label="What made you choose to have information in some cases?")
-    q3 = models.StringField(label="What made you choose not to have information in other cases?")
+    q1 = models.StringField(label='You decided sometimes to pay for information about Q when it’s not free. What were your reasons?')
+    q2 = models.StringField(label="Sometimes you decided not to obtain information about Q even for free. What were your reasons?")
 
 
     def flip_coin(self):
@@ -155,7 +154,7 @@ class Player(BasePlayer):
                     self.Q_known = 1
                     return message
             self.Q_known = 0
-            return 'Sorry.You can not see the value of Q. Because you did not pay the price.'
+            return 'Sorry. You can not see the value of Q. Because you did not pay the price.'
         return ''
 
     def select_Q(self,case):

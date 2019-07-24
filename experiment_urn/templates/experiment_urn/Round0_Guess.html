@@ -3,13 +3,16 @@
 
 
 {% block content %}
+<p>You will not get paid for this round</p>
 <p>
    <img src= "{% static Q_pic %}" height="400">
 </p>
 <p>
     {{ Q_message }}
 </p>
-
+<p>
+   <img src= "{% static "intro_part/round0_balls.png" %}" height="150">
+</p>
 <p>
     {% formfield player.guess_color %}
 </p>

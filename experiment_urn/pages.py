@@ -153,7 +153,7 @@ class Round_StrategyQ(Page):
         }
 
 class Questions(Page):
-    form_fields = ['q1','q2','q3']
+    form_fields = ['q1','q2']
     form_model = models.Player
 
     def is_displayed(self):
@@ -164,8 +164,8 @@ page_sequence = [
     Round0_StrategyQ,
     IntroQ,
     GuessColor,
-    Results,
     Round_StrategyQ,
+    Results,
     Questions
 
 ]

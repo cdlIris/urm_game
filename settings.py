@@ -25,10 +25,10 @@ SESSION_CONFIGS = [
        'app_sequence': ['intro_part_trt','experiment_urn_trt','IQ','pickCard'],
     },
     {
-       'name': 'IQ',
-       'display_name': "IQ",
+       'name': 'urn',
+       'display_name': "urn",
        'num_demo_participants': 1,
-       'app_sequence': ['IQ'],
+       'app_sequence': ['experiment_urn'],
     },
     {
        'name': 'pickCard',
