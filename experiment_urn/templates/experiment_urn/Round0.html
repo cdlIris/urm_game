@@ -41,6 +41,11 @@
     </p>
     <table style="width:100%;">
         <tr>
+            <th>Pay 0 ECUs to know the value of Q</th>
+            <th>Yes &nbsp;<input type="radio" id="o0a" name="quiz0" value="Yes" /></th>
+            <th>No&nbsp;<input type="radio" id="o0B" name="quiz0" value="No" /></th>
+        </tr>
+        <tr>
             <th>Pay 10 ECUs to know the value of Q</th>
             <th>Yes &nbsp;<input type="radio" id="o1a" name="quiz1" value="Yes" /></th>
             <th>No&nbsp;<input type="radio" id="o1B" name="quiz1" value="No" /></th>
@@ -99,6 +104,7 @@
     $(document).ready(function(){
         $("#Q_quiz").hide();
         var select_No = function() {
+            $("#o0B").prop("checked", true);
             $("#o1B").prop("checked", true);
             $("#o2B").prop("checked", true);
             $("#o3B").prop("checked", true);
@@ -123,6 +129,25 @@
                 $("#next_btn").removeAttr('disabled');
             }
         });
+        $('input:radio[name="quiz0"]').change(function(){
+            $("#next_btn").removeAttr('disabled');
+
+            if ($(this).is(':checked') && $(this).val() == 'No') {
+                select_No();
+            }
+            if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o10B").prop("checked", true);
+                $("#o1B").prop("checked", true);
+                $("#o2B").prop("checked", true);
+                $("#o3B").prop("checked", true);
+                $("#o4B").prop("checked", true);
+                $("#o5B").prop("checked", true);
+                $("#o6B").prop("checked", true);
+                $("#o7B").prop("checked", true);
+                $("#o8B").prop("checked", true);
+                $("#o9B").prop("checked", true);
+            }
+        });
         $('input:radio[name="quiz1"]').change(function(){
             $("#next_btn").removeAttr('disabled');
 
@@ -130,6 +155,7 @@
                 select_No();
             }
             if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o0a").prop("checked", true);
                 $("#o10B").prop("checked", true);
                 $("#o2B").prop("checked", true);
                 $("#o3B").prop("checked", true);
@@ -147,6 +173,7 @@
                 select_No();
             }
             if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o0a").prop("checked", true);
                 $("#o1a").prop("checked", true);
                 $("#o10B").prop("checked", true);
                 $("#o3B").prop("checked", true);
@@ -164,6 +191,7 @@
                 select_No();
             }
             if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o0a").prop("checked", true);
                 $("#o1a").prop("checked", true);
                 $("#o2a").prop("checked", true);
                 $("#o4B").prop("checked", true);
@@ -181,6 +209,7 @@
                 select_No();
             }
             if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o0a").prop("checked", true);
                 $("#o1a").prop("checked", true);
                 $("#o2a").prop("checked", true);
                 $("#o3a").prop("checked", true);
@@ -198,6 +227,7 @@
                 select_No();
             }
             if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o0a").prop("checked", true);
                 $("#o1a").prop("checked", true);
                 $("#o2a").prop("checked", true);
                 $("#o4a").prop("checked", true);
@@ -215,6 +245,7 @@
                 select_No();
             }
             if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o0a").prop("checked", true);
                 $("#o1a").prop("checked", true);
                 $("#o2a").prop("checked", true);
                 $("#o4a").prop("checked", true);
@@ -232,6 +263,7 @@
                 select_No();
             }
             if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o0a").prop("checked", true);
                 $("#o1a").prop("checked", true);
                 $("#o2a").prop("checked", true);
                 $("#o4a").prop("checked", true);
@@ -249,6 +281,7 @@
                 select_No();
             }
             if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o0a").prop("checked", true);
                 $("#o1a").prop("checked", true);
                 $("#o2a").prop("checked", true);
                 $("#o4a").prop("checked", true);
@@ -266,6 +299,7 @@
                 select_No();
             }
             if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o0a").prop("checked", true);
                 $("#o1a").prop("checked", true);
                 $("#o2a").prop("checked", true);
                 $("#o3a").prop("checked", true);
@@ -283,6 +317,7 @@
                 select_No();
             }
             if ($(this).is(':checked') && $(this).val() == 'Yes') {
+                $("#o0a").prop("checked", true);
                 $("#o1a").prop("checked", true);
                 $("#o2a").prop("checked", true);
                 $("#o3a").prop("checked", true);

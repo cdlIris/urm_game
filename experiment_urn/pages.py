@@ -15,7 +15,7 @@ class ResultsWaitPage(WaitPage):
 
 
 class IntroQ(Page):
-    form_fields = ['free_Q', 'quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10']
+    form_fields = ['free_Q', 'quiz0', 'quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10']
     form_model = models.Player
 
     def vars_for_template(self):
@@ -91,7 +91,7 @@ class FinalResult(Page):
         return self.round_number == Constants.num_rounds
 
 class Round0(Page):
-    form_fields = ['free_Q', 'quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10']
+    form_fields = ['free_Q', 'quiz0', 'quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10']
     form_model = models.Player
     def is_displayed(self):
         return self.round_number == 1
@@ -158,10 +158,16 @@ class Questions(Page):
 
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
+
+class Real_Start(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
 page_sequence = [
     Round0,
     Round0_Guess,
     Round0_StrategyQ,
+    Real_Start,
     IntroQ,
     GuessColor,
     Round_StrategyQ,

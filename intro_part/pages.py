@@ -90,7 +90,8 @@ class Q5(Page):
         self.player.participant.vars['comprehension'] = self.player.payoff
 
 
-
+class Round0_Start(Page):
+    pass
 
 page_sequence = [
     GeneralInfo,
@@ -104,5 +105,6 @@ page_sequence = [
     Q2,
     Q3,
     Q4,
-    Q5
+    Q5,
+    Round0_Start
 ]

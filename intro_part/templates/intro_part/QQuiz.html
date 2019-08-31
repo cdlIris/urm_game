@@ -4,32 +4,22 @@
 
 {% block content %}
 <p>
-   Before you make the guess, there is an opportunity for you to know Q, which may help you make the guess. You will be
-    asked the following 2 questions.
+    Before you guess, there is an opportunity for you to know Q, which may help you guess. You will be asked the following 2 questions.
 </p>
 <p>
-    First, do you want to know Q if this information is free?
+    First, do you want to know Q? If you choose no, then we will not show you the value of Q for sure. You can keep your 100 ECUs endowment.
 </p>
 <p>
-    Second, if you choose no, then you won’t be shown the value of Q even if it is free, and you can keep your 100 ECUs
-    endowment; if you choose yes, then you will be asked another question.
+    Second, if you choose yes, you will be asked how much you are willing to pay for the information about Q out of your 100 ECUs endowment. Depending on your answer, you may or may not know the value of Q. For example, this is what you will see if you choose yes in the first question.
 </p>
 <p>
     <img src= "{% static "intro_part/Urn_QQuiz.png" %}" height="350">
 </p>
 <p>
-    After you make your choices, the computer will flip a virtual fair coin to decide whether Q will be revealed to you
-    for free. That means, there is a 1-in-2 chance that you will know Q for free. In that case, if you choose yes to the
-    first question, we will show you the value of Q before you make your guess; if you choose no, we will not show you
-    the value of Q.
+    After you make your choices on this list, the computer will draw a number between 0 and 100. If you choose Yes at prices higher than or equal to that number, then you will pay a price equal to the random number out of your 100 ECUs endowment, and we will tell you the value of Q. If you choose Yes at prices lower than that number, then you won’t pay anything, and we won’t tell you the value of Q
 </p>
 <p>
-    And there is a 1-in-2 chance that you won’t know Q for free. In that case, if you choose no to the first question,
-    we will not show you the value of Q before you make the guess. If you choose yes to the first question, we will show
-    you the value of Q at a price determined by your choices in the second question: The computer will randomly draw a
-    number between 0 and 100. If you choose Yes at prices higher than or equal to that number, then you will pay a price
-    equal to the random number out of your 100 ECUs endowment, and we will tell you the value of Q. If you choose Yes at
-    prices lower than that number, then you won’t pay anything, and we won’t tell you the value of Q.
+    On this list, for instance, “Pay 0 ECUs to know the value of Q” means getting Q for free; “Pay 10 ECUs to know the value of Q” means paying 10 ECUs for Q and keep 90 ECUs to yourself. Choosing Yes
 </p>
     {% next_button %}
 

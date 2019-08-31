@@ -26,7 +26,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     free_Q = models.StringField(choices=["Yes", "No"], widget=widgets.RadioSelectHorizontal,
-                                label="Before you guess which urn is used, do you want to know Q if this information is free?")
+                                label="Before you guess which urn is used, do you want to know Q?")
 
     color = models.StringField(choices=['Red', 'Black'], widget=widgets.RadioSelectHorizontal,
                                label= "Please guess, which urn is used in this round?")

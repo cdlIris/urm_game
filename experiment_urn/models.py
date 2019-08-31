@@ -37,8 +37,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     num_red = models.IntegerField()
     free_Q = models.StringField(choices=["Yes", "No"], widget=widgets.RadioSelect,
-                                label="Before you guess which urn is used, do you want to know Q if this information "
-                                      "is free?")
+                                label="Before you guess which urn is used, do you want to know Q?")
 
 
     guess_color = models.StringField(choices=['red', 'black'], widget=widgets.RadioSelect,
@@ -52,6 +51,7 @@ class Player(BasePlayer):
     Q_known = models.IntegerField()
     Urn_color = models.StringField()
 
+    quiz0 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect, blank=True)
     quiz1 = models.StringField(choices=['Yes','No'], widget=widgets.RadioSelect, blank=True)
     quiz2 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
     quiz3 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
@@ -91,18 +91,21 @@ class Player(BasePlayer):
         self.payoff = Constants.endowment
         self.charge = 0
         message = 'The value of Q is ' + str(int(self.Q_value*10))
+        self.charge = random.randint(0, 100)
         if self.round_number == 1:
             self.participant.vars['payoff'] = []
         if self.free_Q == 'No': # not see Q
             self.payoff = Constants.endowment
             return ''
-        if self.free_Q == 'Yes' and self.coin_value == 1: # see Q free
+        if self.free_Q == 'Yes' and self.charge == 0: # see Q free
             self.payoff = Constants.endowment
-            return 'The value of Q is ' + str(int(self.Q_value*10))
-        if self.free_Q == 'Yes' and self.coin_value == 0: # see Q not free
+            if self.quiz0 == 'Yes':
+                return 'The value of Q is ' + str(int(self.Q_value*10))
+            else:
+                return 'Sorry. You can not see the vlaue of Q.'
+        if self.free_Q == 'Yes' and self.charge != 0: # see Q not free
             choice_lst = [self.quiz1, self.quiz2, self.quiz3, self.quiz4, self.quiz5, self.quiz6, self.quiz7, self.quiz8,
                           self.quiz9, self.quiz10]
-            self.charge = random.randint(0, 100)
             if self.charge <= 10:
                 if 'Yes' in choice_lst:
                     self.payoff -= self.charge
