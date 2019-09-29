@@ -44,13 +44,18 @@ SESSION_CONFIGS = [
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
+REAL_WORLD_CURRENCY_CODE = 'EUR'
 POINTS_DECIMAL_PLACES = 0
 REAL_WORLD_CURRENCY_DECIMAL_PLACES = 2
 USE_POINTS = True
 
-ROOMS = []
 
+ROOMS = [
+    {
+        'name': 'Urn Game',
+        'display_name': 'Urn Game',
+    }
+]
 
 # AUTH_LEVEL:
 # this setting controls which parts of your site are freely accessible,
