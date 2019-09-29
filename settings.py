@@ -52,8 +52,8 @@ USE_POINTS = True
 
 ROOMS = [
     {
-        'name': 'Urn Game',
-        'display_name': 'Urn Game',
+        'name': 'Urn_Game',
+        'display_name': 'Urn_Game',
     }
 ]
 
