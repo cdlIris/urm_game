@@ -27,9 +27,14 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         if self.round_number == 1:
             for p in self.get_players():
-                p.participant.vars['case_lst'] = [1,2,3,4]
+                p.participant.vars['charge'] = []
+                p.participant.vars['case_lst'] = [1, 2, 3, 4]
                 random.shuffle(p.participant.vars['case_lst'])
-                # print("p ", p.id_in_group, " case lst; ", p.participant.vars['case_lst'])
+                random.seed()
+                p.participant.vars['chosen_round'] = random.randint(1, Constants.num_rounds)
+                p.draw_balls()
+                for i in range(0, Constants.num_rounds):
+                    p.participant.vars['charge'].append(random.randint(0, 100))
 
 
 class Group(BaseGroup):
@@ -67,27 +72,48 @@ class Player(BasePlayer):
             col_order.reverse()
         return col_order
 
+    def select_Q(self,case):
+        return Constants.cases[case][1]
+
     def draw_balls(self):
-        if self.round_number == 1:
-            self.participant.vars['Q_lst'] = []
-            self.participant.vars['color_lst'] = []
+        self.participant.vars['Q_lst'] = []
+        self.participant.vars['color_lst'] = []
+        self.participant.vars['ball_lsts'] = []
+        self.participant.vars['color_orders'] = []
+        self.participant.vars['Q_s'] = []
 
-        # 1. get block
-        cur_blk = int((self.round_number - 1)/10)
-        # 2. get current case
+        for i in range(0, Constants.num_rounds):
+            # 1. get current block (round block)
+            cur_blk = int(i / 10)
+            # 2. get current case by block [1,2,3,4]
+            cur_case = self.participant.vars['case_lst'][cur_blk]
+            # 3. get color
+            color_order = self.select_color(cur_case - 1)
+            self.participant.vars['color_orders'].append(color_order[0])
+            # 4. get Q
+            Q = self.select_Q(cur_case - 1)
+            self.participant.vars['Q_s'].append(Q)
+            balls_lst = []
+            # 5. draw 6 balls with replacement
+            for j in range(0, 6):
+                balls_lst.append(np.random.choice(np.array(color_order), p=[Q, 1 - Q]))
+            self.participant.vars['ball_lsts'].append(balls_lst)
+
+    def draw(self):
+        cur_blk = int((self.round_number - 1) / 10)
         self.cur_case = self.participant.vars['case_lst'][cur_blk]
-        # 3. get urn color
-        color_order = self.select_color(self.cur_case - 1)
-        # 4. get Q value
-        Q = Constants.cases[self.cur_case-1][1]
-
-        balls_lst = []  # draw 6 balls with replacement
+        self.urn_color = self.participant.vars['color_orders'][self.round_number - 1]
+        self.Q_value = self.participant.vars['Q_s'][self.round_number - 1]
+        self.participant.vars['Q_lst'].append(self.Q_value)
+        self.participant.vars['color_lst'].append(self.urn_color)
+        ball_lst = self.participant.vars['ball_lsts'][self.round_number - 1]
+        new_lst = ball_lst.copy()
+        red = 0
+        black = 0
         for i in range(0, 6):
-            balls_lst.append(np.random.choice(np.array(color_order), p=[Q, 1 - Q]))
-
-        # 6. record ball list, Q list, color list (player's and session-wide)
-        self.urn_color = color_order[0]
-        self.Q_value = Q
-        self.participant.vars['6balls'] = balls_lst
-        self.participant.vars['Q_lst'].append(Q)
-        self.participant.vars['color_lst'].append([color_order[0]])
+            if ball_lst[i] == 'red':
+                red += 1
+            else:
+                black += 1
+            new_lst[i] =  'background:' + ball_lst[i] + ';'
+        return (red, black, new_lst)

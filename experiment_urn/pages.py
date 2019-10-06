@@ -23,7 +23,6 @@ class IntroQ(Page):
         self.player.flip_coin() # flip the virtual coin
         pic = 'intro_part/Block' + str(self.player.cur_case) + '_unknown.jpg'
         self.player.num_red = red
-        print("!!!!!!!!!!!lst ", lst)
         return {
             'balls_num': range(0, 6),
             'ball_lst1': lst[0:3],

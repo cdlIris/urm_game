@@ -18,24 +18,14 @@ class IntroQ(Page):
     form_model = models.Player
 
     def vars_for_template(self):
-        self.player.draw_balls()
-        ball_lst = self.player.participant.vars['6balls']
+        (red, black, lst) = self.player.draw()
         self.player.flip_coin() # flip the virtual coin
-        red = 0
-        black = 0
         pic = 'intro_part_trt/control_' + str(self.player.cur_case) + '.jpg'
-
-        for i in range(0,6):
-            if ball_lst[i] == 'red':
-                red += 1
-            else:
-                black += 1
-            ball_lst[i] = 'background:' + ball_lst[i] + ';'
         self.player.red = red
         return {
             'balls_num': range(0, 6),
-            'ball_lst1': ball_lst[0:3],
-            'ball_lst2': ball_lst[3:6],
+            'ball_lst1': lst[0:3],
+            'ball_lst2': lst[3:6],
             'red': red,
             'black': black,
             'round_num': self.round_number,
