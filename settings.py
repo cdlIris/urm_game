@@ -36,6 +36,12 @@ SESSION_CONFIGS = [
        'num_demo_participants': 1,
        'app_sequence': ['pickCard'],
     },
+    {
+        'name': 'IQ',
+        'display_name': "IQ",
+        'num_demo_participants': 1,
+        'app_sequence': ['IQ']
+    }
 ]
 
 
@@ -44,7 +50,7 @@ SESSION_CONFIGS = [
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'EUR'
+REAL_WORLD_CURRENCY_CODE = 'GBP'
 POINTS_DECIMAL_PLACES = 0
 REAL_WORLD_CURRENCY_DECIMAL_PLACES = 2
 USE_POINTS = True

@@ -27,15 +27,17 @@ class Intro(Page):
 
 class FinalResult(Page):
     def vars_for_template(self):
-        random.shuffle(self.player.participant.vars['payoff'])
-        urn = self.player.participant.vars['payoff'][0] + self.player.participant.vars['comprehension']
+        # random.shuffle(self.player.participant.vars['payoff'])
+        chosen_round = self.player.participant.vars['chosen_round']
+        urn = self.player.participant.vars['payoff'][chosen_round] + self.player.participant.vars['comprehension']
         urn = round(float(urn) * self.session.config['real_world_currency_per_point'],2)
         IQ = round(float(self.player.participant.vars['IQ']) * self.session.config['real_world_currency_per_point'], 2)
         self.player.final_payoff = urn + IQ + Constants.show_up
         return {
             'Urn': urn,
             'IQ': IQ,
-            'show_up': Constants.show_up
+            'show_up': Constants.show_up,
+            'total': urn + IQ + Constants.show_up
         }
 
 page_sequence = [

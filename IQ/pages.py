@@ -257,7 +257,8 @@ class IntroIQ(Page):
 
 class demographic(Page):
     form_model = models.Player
-    form_fields = ['age', 'gender', 'gender_other', 'student', 'edu_level', 'major', 'major_other','math_course', 'econ_course']
+    form_fields = ['age', 'gender', 'student', 'edu_level', 'no_major','arts','business','economics',
+    'politics', 'psychology', 'other_Social_Sciences', 'law', 'medical', 'math', 'other', 'math_course', 'econ_course']
 
     def is_displayed(self):
         if self.round_number == 1:

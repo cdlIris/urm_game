@@ -19,24 +19,15 @@ class IntroQ(Page):
     form_model = models.Player
 
     def vars_for_template(self):
-        self.player.draw_balls()
-        ball_lst = self.player.participant.vars['6balls']
+        (red, black, lst) = self.player.draw()
         self.player.flip_coin() # flip the virtual coin
-        red = 0
-        black = 0
         pic = 'intro_part/Block' + str(self.player.cur_case) + '_unknown.jpg'
-
-        for i in range(0,6):
-            if ball_lst[i] == 'red':
-                red += 1
-            else:
-                black += 1
-            ball_lst[i] = 'background:' + ball_lst[i] + ';'
         self.player.num_red = red
+        print("!!!!!!!!!!!lst ", lst)
         return {
             'balls_num': range(0, 6),
-            'ball_lst1': ball_lst[0:3],
-            'ball_lst2': ball_lst[3:6],
+            'ball_lst1': lst[0:3],
+            'ball_lst2': lst[3:6],
             'red': red,
             'black': black,
             'round_num': self.round_number,
@@ -50,10 +41,10 @@ class GuessColor(Page):
     form_fields = ['guess_color']
 
     def vars_for_template(self):
-        ball_lst = self.player.participant.vars['6balls']
+        ball_lst = self.player.draw()[2]
         Q_message = self.player.set_payoff()
         pic = 'intro_part/Block' + str(self.player.cur_case) + '_unknown.jpg'
-        print("****************************************Q message ", Q_message)
+        print("**************************************** ", ball_lst)
         if self.player.free_Q != 'No':
             if Q_message[0] == 'T':
                 if self.player.Q_value == Constants.cases[self.player.cur_case-1][1][0]:
@@ -85,10 +76,6 @@ class Results(Page):
             'case': int(self.round_number/10)
         }
 
-
-class FinalResult(Page):
-    def is_displayed(self):
-        return self.round_number == Constants.num_rounds
 
 class Round0(Page):
     form_fields = ['free_Q', 'quiz0', 'quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10']
