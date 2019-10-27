@@ -15,7 +15,8 @@ class ResultsWaitPage(WaitPage):
 
 
 class IntroQ(Page):
-    form_fields = ['free_Q', 'quiz0', 'quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10']
+    form_fields = ['free_Q', 'quiz0', 'quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10',
+                   'quiz11', 'quiz12', 'quiz13', 'quiz14', 'quiz15']
     form_model = models.Player
 
     def vars_for_template(self):
@@ -77,7 +78,8 @@ class Results(Page):
 
 
 class Round0(Page):
-    form_fields = ['free_Q', 'quiz0', 'quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10']
+    form_fields = ['free_Q', 'quiz0', 'quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10',
+                   'quiz11', 'quiz12', 'quiz13', 'quiz14', 'quiz15']
     form_model = models.Player
     def is_displayed(self):
         return self.round_number == 1

@@ -33,7 +33,7 @@ class Subsession(BaseSubsession):
                 p.participant.vars['chosen_round'] = random.randint(1, Constants.num_rounds)
                 p.draw_balls()
                 for i in range(0, Constants.num_rounds):
-                    p.participant.vars['charge'].append(random.randint(0, 100))
+                    p.participant.vars['charge'].append(random.randint(0, 30))
 
 
 
@@ -58,17 +58,22 @@ class Player(BasePlayer):
     Q_known = models.IntegerField()
     Urn_color = models.StringField()
 
-    quiz0 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect, blank=True)
-    quiz1 = models.StringField(choices=['Yes','No'], widget=widgets.RadioSelect, blank=True)
-    quiz2 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
-    quiz3 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
-    quiz4 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
-    quiz5 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
-    quiz6 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
-    quiz7 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
-    quiz8 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
-    quiz9 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
-    quiz10 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelect,blank=True)
+    quiz0 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz1 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz2 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz3 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz4 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz5 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz6 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz7 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz8 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz9 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz10 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz11 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz12 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz13 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz14 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
+    quiz15 = models.BooleanField(widget=widgets.CheckboxInput, blank=True)
 
     StrategyQ_1 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelectHorizontal)
     StrategyQ_2 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelectHorizontal,
@@ -111,59 +116,84 @@ class Player(BasePlayer):
                 return 'Sorry. You can not see the vlaue of Q.'
         if self.free_Q == 'Yes' and self.charge != 0: # see Q not free
             choice_lst = [self.quiz1, self.quiz2, self.quiz3, self.quiz4, self.quiz5, self.quiz6, self.quiz7, self.quiz8,
-                          self.quiz9, self.quiz10]
-            if self.charge <= 10:
-                if 'Yes' in choice_lst:
+                          self.quiz9, self.quiz10, self.quiz11, self.quiz12, self.quiz13, self.quiz14, self.quiz15]
+            if self.charge <= 2:
+                if 1 in choice_lst:
                     self.payoff -= self.charge
                     self.Q_known = 1
                     return message
-            if 10 < self.charge <= 20:
-                if 'Yes' in choice_lst[1:]:
+            if 2 < self.charge <= 4:
+                if 1 in choice_lst[1:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
                     return message
-            if 20 < self.charge <= 30:
-                if 'Yes' in choice_lst[2:]:
+            if 4 < self.charge <= 6:
+                if 1 in choice_lst[2:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
                     return message
-            if 30 < self.charge <= 40:
-                if 'Yes' in choice_lst[3:]:
+            if 6 < self.charge <= 8:
+                if 1 in choice_lst[3:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
                     return message
-            if 40 < self.charge <= 50:
-                if 'Yes' in choice_lst[4:]:
+            if 8 < self.charge <= 10:
+                if 1 in choice_lst[4:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
                     return message
-            if 50 < self.charge <= 60:
-                if 'Yes' in choice_lst[5:]:
+            if 10 < self.charge <= 12:
+                if 1 in choice_lst[5:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
                     return message
-            if 60 < self.charge <= 70:
-                if 'Yes' in choice_lst[6:]:
+            if 12 < self.charge <= 14:
+                if 1 in choice_lst[6:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
                     return message
-            if 70 < self.charge <= 80:
-                if 'Yes' in choice_lst[7:]:
+            if 14 < self.charge <= 16:
+                if 1 in choice_lst[7:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
                     return message
-            if 80 < self.charge <= 90:
-                if 'Yes' in choice_lst[8:]:
+            if 16 < self.charge <= 18:
+                if 1 in choice_lst[8:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
                     return message
-            if 90 < self.charge <= 100:
-                if 'Yes' in choice_lst[9]:
+            if 18 < self.charge <= 20:
+                if 1 in choice_lst[9:]:
+                    self.payoff -= self.charge
+                    self.Q_known = 1
+                    return message
+            if 20 < self.charge <= 22:
+                if 1 in choice_lst[10:]:
+                    self.payoff -= self.charge
+                    self.Q_known = 1
+                    return message
+            if 22 < self.charge <= 24:
+                if 1 in choice_lst[11:]:
+                    self.payoff -= self.charge
+                    self.Q_known = 1
+                    return message
+            if 24 < self.charge <= 26:
+                if 1 in choice_lst[12:]:
+                    self.payoff -= self.charge
+                    self.Q_known = 1
+                    return message
+            if 26 < self.charge <= 28:
+                if 1 in choice_lst[13:]:
+                    self.payoff -= self.charge
+                    self.Q_known = 1
+                    return message
+            if 28 < self.charge <= 30:
+                if 1 in choice_lst[14:]:
                     self.payoff -= self.charge
                     self.Q_known = 1
                     return message
             self.Q_known = 0
-            return 'Sorry. You can not see the value of Q. Because you did not pay the price.'
+            return 'Sorry, you did not learn the value of Q this round as the price of Q exceeded the maximum price you were willing to pay.'
         return ''
 
     def select_Q(self,case):

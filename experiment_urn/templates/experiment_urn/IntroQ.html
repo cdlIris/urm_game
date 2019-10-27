@@ -63,6 +63,9 @@
 <p>
     {{ red }} red balls and {{ black }} black balls are drawn.
 </p>
+<p>
+    You will receive 100 ECUs if you guess correctly the color of the urn from which the balls are drawn.
+</p>
  {{ form.free_Q.label }}<br>
 <input type="radio" id="free_Q_yes" name="free_Q" value="Yes"/> &nbsp; Yes <br>
 <input type="radio" id="free_Q_no" name="free_Q" value="No"/> &nbsp; No<br>
@@ -75,84 +78,635 @@
 <div id="Q_quiz">
     <p>
         If you choose yes in the above question, you will be asked the following question:
-        <br>
-        For each row, please indicate whether you would know the value of Q at that price.
     </p>
-    <table style="width:100%">
-         <tr>
-            <th>Pay 0 ECUs to know the value of Q</th>
-            <th>Yes &nbsp;<input type="radio" id="o0a" name="quiz0" value="Yes" /></th>
-            <th>No&nbsp;<input type="radio" id="o0B" name="quiz0" value="No" /></th>
+   <table style="width:100%;">
+        <tr>
+            <th>0</th>
+            <th>2</th>
+            <th>4</th>
+            <th>6</th>
+            <th>8</th>
+            <th>10</th>
+            <th>12</th>
+            <th>14</th>
+            <th>16</th>
+            <th>18</th>
+            <th>20</th>
+            <th>22</th>
+            <th>24</th>
+            <th>26</th>
+            <th>28</th>
+            <th>30</th>
         </tr>
         <tr>
-            <th>Pay 10 ECUs to know the value of Q</th>
-            <th>Yes &nbsp;<input type="radio" id="o1a" name="quiz1" value="Yes" /></th>
-            <th>No&nbsp;<input type="radio" id="o1B" name="quiz1" value="No" /></th>
-        </tr>
-        <tr>
-            <th>Pay 20 ECUs to know the value of Q</th>
-            <th>Yes &nbsp;<input type="radio" id="o2a" name="quiz2" value="Yes" /></th>
-            <th>No&nbsp;<input type="radio" id="o2B" name="quiz2" value="No" /></th>
-        </tr>
-        <tr>
-            <th>Pay 30 ECUs to know the value of Q</th>
-            <th>Yes &nbsp;<input type="radio" id="o3a" name="quiz3" value="Yes" /></th>
-            <th>No&nbsp;<input type="radio" id="o3B" name="quiz3" value="No" /></th>
-        </tr>
-        <tr>
-            <th>Pay 40 ECUs to know the value of Q</th>
-            <th>Yes &nbsp;<input type="radio" id="o4a" name="quiz4" value="Yes" /></th>
-            <th>No&nbsp;<input type="radio" id="o4B" name="quiz4" value="No" /></th>
-        </tr>
-        <tr>
-            <th>Pay 50 ECUs to know the value of Q</th>
-            <th>Yes &nbsp;<input type="radio" id="o5a" name="quiz5" value="Yes" /></th>
-            <th>No&nbsp;<input type="radio" id="o5B" name="quiz5" value="No" /></th>
-        </tr>
-        <tr>
-            <th>Pay 60 ECUs to know the value of Q</th>
-            <th>Yes &nbsp;<input type="radio" id="o6a" name="quiz6" value="Yes" /></th>
-            <th>No&nbsp;<input type="radio" id="o6B" name="quiz6" value="No" /></th>
-        </tr>
-        <tr>
-            <th>Pay 70 ECUs to know the value of Q</th>
-            <th>Yes &nbsp;<input type="radio" id="o7a" name="quiz7" value="Yes" /></th>
-            <th>No&nbsp;<input type="radio" id="o7B" name="quiz7" value="No" /></th>
-        </tr>
-        <tr>
-            <th>Pay 80 ECUs to know the value of Q</th>
-            <th>Yes &nbsp;<input type="radio" id="o8a" name="quiz8" value="Yes" /></th>
-            <th>No&nbsp;<input type="radio" id="o8B" name="quiz8" value="No" /></th>
-        </tr>
-        <tr>
-            <th>Pay 90 ECUs to know the value of Q</th>
-            <th>Yes &nbsp;<input type="radio" id="o9a" name="quiz9" value="Yes" /></th>
-            <th>No&nbsp;<input type="radio" id="o9B" name="quiz9" value="No" /></th>
-        </tr>
-        <tr>
-            <th>Pay 100 ECUs to know the value of Q</th>
-            <th><label>Yes &nbsp;<input type="radio" id="o10a" name="quiz10" value="Yes" /></label></th>
-            <th><label>No&nbsp;<input type="radio" id="o10B" name="quiz10" value="No" /></label></th>
+            <th><input type="checkbox" id="o0a" name="quiz0" onclick="a0()"/></th>
+            <th><input type="checkbox" id="o1a" name="quiz1" onclick="a1()"/></th>
+            <th><input type="checkbox" id="o2a" name="quiz2" onclick="a2()"/></th>
+            <th><input type="checkbox" id="o3a" name="quiz3" onclick="a3()"/></th>
+            <th><input type="checkbox" id="o4a" name="quiz4" onclick="a4()"/></th>
+            <th><input type="checkbox" id="o5a" name="quiz5" onclick="a5()"/></th>
+            <th><input type="checkbox" id="o6a" name="quiz6" onclick="a6()"/></th>
+            <th><input type="checkbox" id="o7a" name="quiz7" onclick="a7()"/></th>
+            <th><input type="checkbox" id="o8a" name="quiz8" onclick="a8()"/></th>
+            <th><input type="checkbox" id="o9a" name="quiz9" onclick="a9()"/></th>
+            <th><input type="checkbox" id="o10a" name="quiz10" onclick="a10()"/></th>
+            <th><input type="checkbox" id="o11a" name="quiz11" onclick="a11()"/></th>
+            <th><input type="checkbox" id="o12a" name="quiz12" onclick="a12()"/></th>
+            <th><input type="checkbox" id="o13a" name="quiz13" onclick="a13()"/></th>
+            <th><input type="checkbox" id="o14a" name="quiz14" onclick="a14()"/></th>
+            <th><input type="checkbox" id="o15a" name="quiz15" onclick="a15()"/></th>
         </tr>
     </table>
 </div>
 <script>
+function select_no(){
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+}
+function a0() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o0a");
 
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a1() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o1a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a2() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o2a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a3() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o3a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a4() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o4a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a5() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o5a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#o4a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a6() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o6a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#o4a").prop("checked", true);
+    $("#o5a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a7() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o7a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#o4a").prop("checked", true);
+    $("#o5a").prop("checked", true);
+    $("#o6a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a8() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o8a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#o4a").prop("checked", true);
+    $("#o5a").prop("checked", true);
+    $("#o6a").prop("checked", true);
+    $("#o7a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a9() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o9a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#o4a").prop("checked", true);
+    $("#o5a").prop("checked", true);
+    $("#o6a").prop("checked", true);
+    $("#o7a").prop("checked", true);
+    $("#o8a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+
+function a10() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o10a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#o4a").prop("checked", true);
+    $("#o5a").prop("checked", true);
+    $("#o6a").prop("checked", true);
+    $("#o7a").prop("checked", true);
+    $("#o8a").prop("checked", true);
+    $("#o9a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+
+function a11() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o11a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#o4a").prop("checked", true);
+    $("#o5a").prop("checked", true);
+    $("#o6a").prop("checked", true);
+    $("#o7a").prop("checked", true);
+    $("#o8a").prop("checked", true);
+    $("#o9a").prop("checked", true);
+    $("#o10a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a12() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o12a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#o4a").prop("checked", true);
+    $("#o5a").prop("checked", true);
+    $("#o6a").prop("checked", true);
+    $("#o7a").prop("checked", true);
+    $("#o8a").prop("checked", true);
+    $("#o9a").prop("checked", true);
+    $("#o10a").prop("checked", true);
+    $("#o11a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a13() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o13a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#o4a").prop("checked", true);
+    $("#o5a").prop("checked", true);
+    $("#o6a").prop("checked", true);
+    $("#o7a").prop("checked", true);
+    $("#o8a").prop("checked", true);
+    $("#o9a").prop("checked", true);
+    $("#o10a").prop("checked", true);
+    $("#o11a").prop("checked", true);
+    $("#o12a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a14() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o14a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#o4a").prop("checked", true);
+    $("#o5a").prop("checked", true);
+    $("#o6a").prop("checked", true);
+    $("#o7a").prop("checked", true);
+    $("#o8a").prop("checked", true);
+    $("#o9a").prop("checked", true);
+    $("#o10a").prop("checked", true);
+    $("#o11a").prop("checked", true);
+    $("#o12a").prop("checked", true);
+    $("#o13a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
+function a15() {
+  // Get the checkbox
+  var checkBox = document.getElementById("o15a");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    $("#o0a").prop("checked", true);
+    $("#o1a").prop("checked", true);
+    $("#o2a").prop("checked", true);
+    $("#o3a").prop("checked", true);
+    $("#o4a").prop("checked", true);
+    $("#o5a").prop("checked", true);
+    $("#o6a").prop("checked", true);
+    $("#o7a").prop("checked", true);
+    $("#o8a").prop("checked", true);
+    $("#o9a").prop("checked", true);
+    $("#o10a").prop("checked", true);
+    $("#o11a").prop("checked", true);
+    $("#o12a").prop("checked", true);
+    $("#o13a").prop("checked", true);
+    $("#o14a").prop("checked", true);
+    $("#next_btn").removeAttr('disabled');
+  } else {
+    $("#o0a").prop("checked", false);
+    $("#o1a").prop("checked", false);
+    $("#o2a").prop("checked", false);
+    $("#o3a").prop("checked", false);
+    $("#o4a").prop("checked", false);
+    $("#o5a").prop("checked", false);
+    $("#o6a").prop("checked", false);
+    $("#o7a").prop("checked", false);
+    $("#o8a").prop("checked", false);
+    $("#o9a").prop("checked", false);
+    $("#o10a").prop("checked", false);
+    $("#o11a").prop("checked", false);
+    $("#o12a").prop("checked", false);
+    $("#o13a").prop("checked", false);
+    $("#o14a").prop("checked", false);
+    $("#o15a").prop("checked", false);
+    $("#next_btn").attr('disabled', 'disabled');
+  }
+}
 
 
     $(document).ready(function(){
+        $("#Q_quiz").hide();
         var select_No = function() {
-            $("#o0B").prop("checked", true);
-            $("#o1B").prop("checked", true);
-            $("#o2B").prop("checked", true);
-            $("#o3B").prop("checked", true);
-            $("#o4B").prop("checked", true);
-            $("#o5B").prop("checked", true);
-            $("#o6B").prop("checked", true);
-            $("#o7B").prop("checked", true);
-            $("#o8B").prop("checked", true);
-            $("#o9B").prop("checked", true);
-            $("#o10B").prop("checked", true);
+            $("#o0a").prop("checked", false);
+            $("#o1a").prop("checked", false);
+            $("#o2a").prop("checked", false);
+            $("#o3a").prop("checked", false);
+            $("#o4a").prop("checked", false);
+            $("#o5a").prop("checked", false);
+            $("#o6a").prop("checked", false);
+            $("#o7a").prop("checked", false);
+            $("#o8a").prop("checked", false);
+            $("#o9a").prop("checked", false);
+            $("#o10a").prop("checked", false);
         };
 
         $('input:radio[name="free_Q"]').change(function(){
@@ -167,206 +721,7 @@
                 $("#next_btn").removeAttr('disabled');
             }
         });
-        $('input:radio[name="quiz0"]').change(function(){
-            $("#next_btn").removeAttr('disabled');
 
-            if ($(this).is(':checked') && $(this).val() == 'No') {
-                select_No();
-            }
-            if ($(this).is(':checked') && $(this).val() == 'Yes') {
-                $("#o10B").prop("checked", true);
-                $("#o1B").prop("checked", true);
-                $("#o2B").prop("checked", true);
-                $("#o3B").prop("checked", true);
-                $("#o4B").prop("checked", true);
-                $("#o5B").prop("checked", true);
-                $("#o6B").prop("checked", true);
-                $("#o7B").prop("checked", true);
-                $("#o8B").prop("checked", true);
-                $("#o9B").prop("checked", true);
-            }
-        });
-        $('input:radio[name="quiz1"]').change(function(){
-            $("#next_btn").removeAttr('disabled');
-
-            if ($(this).is(':checked') && $(this).val() == 'No') {
-                select_No();
-            }
-            if ($(this).is(':checked') && $(this).val() == 'Yes') {
-                $("#o0a").prop("checked", true);
-                $("#o10B").prop("checked", true);
-                $("#o2B").prop("checked", true);
-                $("#o3B").prop("checked", true);
-                $("#o4B").prop("checked", true);
-                $("#o5B").prop("checked", true);
-                $("#o6B").prop("checked", true);
-                $("#o7B").prop("checked", true);
-                $("#o8B").prop("checked", true);
-                $("#o9B").prop("checked", true);
-            }
-        });
-        $('input:radio[name="quiz2"]').change(function(){
-            $("#next_btn").removeAttr('disabled');
-            if ($(this).is(':checked') && $(this).val() == 'No') {
-                select_No();
-            }
-            if ($(this).is(':checked') && $(this).val() == 'Yes') {
-                $("#o0a").prop("checked", true);
-                $("#o1a").prop("checked", true);
-                $("#o10B").prop("checked", true);
-                $("#o3B").prop("checked", true);
-                $("#o4B").prop("checked", true);
-                $("#o5B").prop("checked", true);
-                $("#o6B").prop("checked", true);
-                $("#o7B").prop("checked", true);
-                $("#o8B").prop("checked", true);
-                $("#o9B").prop("checked", true);
-            }
-        });
-        $('input:radio[name="quiz3"]').change(function(){
-            $("#next_btn").removeAttr('disabled');
-            if ($(this).is(':checked') && $(this).val() == 'No') {
-                select_No();
-            }
-            if ($(this).is(':checked') && $(this).val() == 'Yes') {
-                $("#o0a").prop("checked", true);
-                $("#o1a").prop("checked", true);
-                $("#o2a").prop("checked", true);
-                $("#o4B").prop("checked", true);
-                $("#o5B").prop("checked", true);
-                $("#o6B").prop("checked", true);
-                $("#o7B").prop("checked", true);
-                $("#o8B").prop("checked", true);
-                $("#o9B").prop("checked", true);
-                $("#o10B").prop("checked", true);
-            }
-        });
-        $('input:radio[name="quiz4"]').change(function(){
-            $("#next_btn").removeAttr('disabled');
-            if ($(this).is(':checked') && $(this).val() == 'No') {
-                select_No();
-            }
-            if ($(this).is(':checked') && $(this).val() == 'Yes') {
-                $("#o0a").prop("checked", true);
-                $("#o1a").prop("checked", true);
-                $("#o2a").prop("checked", true);
-                $("#o3a").prop("checked", true);
-                $("#o5B").prop("checked", true);
-                $("#o6B").prop("checked", true);
-                $("#o7B").prop("checked", true);
-                $("#o8B").prop("checked", true);
-                $("#o9B").prop("checked", true);
-                $("#o10B").prop("checked", true);
-            }
-        });
-        $('input:radio[name="quiz5"]').change(function(){
-            $("#next_btn").removeAttr('disabled');
-            if ($(this).is(':checked') && $(this).val() == 'No') {
-                select_No();
-            }
-            if ($(this).is(':checked') && $(this).val() == 'Yes') {
-                $("#o0a").prop("checked", true);
-                $("#o1a").prop("checked", true);
-                $("#o2a").prop("checked", true);
-                $("#o4a").prop("checked", true);
-                $("#o3a").prop("checked", true);
-                $("#o6B").prop("checked", true);
-                $("#o7B").prop("checked", true);
-                $("#o8B").prop("checked", true);
-                $("#o9B").prop("checked", true);
-                $("#o10B").prop("checked", true);
-            }
-        });
-        $('input:radio[name="quiz6"]').change(function(){
-            $("#next_btn").removeAttr('disabled');
-            if ($(this).is(':checked') && $(this).val() == 'No') {
-                select_No();
-            }
-            if ($(this).is(':checked') && $(this).val() == 'Yes') {
-                $("#o0a").prop("checked", true);
-                $("#o1a").prop("checked", true);
-                $("#o2a").prop("checked", true);
-                $("#o4a").prop("checked", true);
-                $("#o5a").prop("checked", true);
-                $("#o3a").prop("checked", true);
-                $("#o7B").prop("checked", true);
-                $("#o8B").prop("checked", true);
-                $("#o9B").prop("checked", true);
-                $("#o10B").prop("checked", true);
-            }
-        });
-        $('input:radio[name="quiz7"]').change(function(){
-            $("#next_btn").removeAttr('disabled');
-            if ($(this).is(':checked') && $(this).val() == 'No') {
-                select_No();
-            }
-            if ($(this).is(':checked') && $(this).val() == 'Yes') {
-                $("#o0a").prop("checked", true);
-                $("#o1a").prop("checked", true);
-                $("#o2a").prop("checked", true);
-                $("#o4a").prop("checked", true);
-                $("#o5a").prop("checked", true);
-                $("#o6a").prop("checked", true);
-                $("#o3a").prop("checked", true);
-                $("#o8B").prop("checked", true);
-                $("#o9B").prop("checked", true);
-                $("#o10B").prop("checked", true);
-            }
-        });
-        $('input:radio[name="quiz8"]').change(function(){
-            $("#next_btn").removeAttr('disabled');
-            if ($(this).is(':checked') && $(this).val() == 'No') {
-                select_No();
-            }
-            if ($(this).is(':checked') && $(this).val() == 'Yes') {
-                $("#o0a").prop("checked", true);
-                $("#o1a").prop("checked", true);
-                $("#o2a").prop("checked", true);
-                $("#o4a").prop("checked", true);
-                $("#o5a").prop("checked", true);
-                $("#o6a").prop("checked", true);
-                $("#o7a").prop("checked", true);
-                $("#o3a").prop("checked", true);
-                $("#o9B").prop("checked", true);
-                $("#o10B").prop("checked", true);
-            }
-        });
-        $('input:radio[name="quiz9"]').change(function(){
-            $("#next_btn").removeAttr('disabled');
-            if ($(this).is(':checked') && $(this).val() == 'No') {
-                select_No();
-            }
-            if ($(this).is(':checked') && $(this).val() == 'Yes') {
-                $("#o0a").prop("checked", true);
-                $("#o1a").prop("checked", true);
-                $("#o2a").prop("checked", true);
-                $("#o3a").prop("checked", true);
-                $("#o4a").prop("checked", true);
-                $("#o5a").prop("checked", true);
-                $("#o6a").prop("checked", true);
-                $("#o7a").prop("checked", true);
-                $("#o8a").prop("checked", true);
-                $("#o10B").prop("checked", true);
-            }
-        });
-        $('input:radio[name="quiz10"]').change(function(){
-            $("#next_btn").removeAttr('disabled');
-            if ($(this).is(':checked') && $(this).val() == 'No') {
-                select_No();
-            }
-            if ($(this).is(':checked') && $(this).val() == 'Yes') {
-                $("#o0a").prop("checked", true);
-                $("#o1a").prop("checked", true);
-                $("#o2a").prop("checked", true);
-                $("#o3a").prop("checked", true);
-                $("#o4a").prop("checked", true);
-                $("#o5a").prop("checked", true);
-                $("#o6a").prop("checked", true);
-                $("#o7a").prop("checked", true);
-                $("#o8a").prop("checked", true);
-                $("#o9a").prop("checked", true);
-            }
-        });
     });
 
 </script>

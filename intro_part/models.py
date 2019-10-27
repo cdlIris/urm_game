@@ -39,18 +39,18 @@ class Player(BasePlayer):
                             label="Which statement is true?", widget=widgets.RadioSelect)
     correct_q2 = models.StringField()
     Q3 = models.StringField(
-        choices=[('A', "Drawing two balls of different color is more likely in the “High Precision” urn."),
-                 ('B', "Drawing two balls of different color is more likely in the “Low Precision” urn.")],
+        choices=[('A', "Drawing two balls of different color is more likely in the “High Q” urn."),
+                 ('B', "Drawing two balls of different color is more likely in the “Low Q” urn.")],
         label="Which statement is true?", widget=widgets.RadioSelect)
     correct_q3 = models.StringField()
     Q4 = models.StringField(
-        choices=[('A', "It is more likely that these six balls have been drawn from the “High Precision” urn."),
-                 ('B', "It is more likely that these six balls have been drawn from the “Low Precision” urn.")],
+        choices=[('A', "It is more likely that these six balls have been drawn from the “High Q” urn."),
+                 ('B', "It is more likely that these six balls have been drawn from the “Low Q” urn.")],
         label="Which statement is true?", widget=widgets.RadioSelect)
     correct_q4 = models.StringField()
     Q5 = models.StringField(
-        choices=[('A', "It is more likely that these six balls have been drawn from the “High Precision” urn."),
-                 ('B', "It is more likely that these six balls have been drawn from the “Low Precision” urn.")],
+        choices=[('A', "It is more likely that these six balls have been drawn from the “High Q” urn."),
+                 ('B', "It is more likely that these six balls have been drawn from the “Low Q” urn.")],
         label="Which statement is true?", widget=widgets.RadioSelect)
     correct_q5 = models.StringField()
 

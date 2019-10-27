@@ -7,16 +7,19 @@
 
 {% block content %}
 <p>
+    The experiment contains 40 rounds, and these rounds are divided into 4 blocks of 10 rounds. <br>
     In the beginning of each round, you will be given an endowment of 100 ECUs. Any gain or loss from that round will be
     added to this amount. The amount remaining at the end of the round will not be carried over to the following round.
     At the end of the experiment 1 round will be randomly selected. Your ending balance in the selected round will
     determine your final payment.
 </p>
 <p>
-    We will show you 10 urns in each round, and only one urn will be selected for that round. Each urn contains 10 balls, with a mix of red and black balls. Q represents the number of red balls in the red urn, and the number of black balls in the black urn. There will always be 2 potential values of Q in each round, one higher and one lower. Out of the 10 urns in each round, 5 will have high Q, and the other 5 will have low Q. In the beginning of each round, you won’t know the exact value of Q, but may have the chance to learn as the round proceeds.
+    We will show you 10 urns in each round. These urns are a mix of black urns and red urns, containing black and red balls. Each urn contains 10 balls, with a mix of red and black balls. Q represents the number of red balls in the red urn, and the number of black balls in the black urn. There will always be 2 potential values of Q in each round, one higher and one lower. Out of the 10 urns in each round, 5 will have high Q, and the other 5 will have low Q. In the beginning of each round, you won’t know the exact value of Q, but may have the chance to learn as the round proceeds.
 
 </p>
-
+<p>
+    The value of Q will remain constant within each block of 10 rounds. For each round, one of the 10 urns will be picked at random. You will be paid an additional 100 ECUs if you correctly pick the colour of the urn chosen.
+</p>
     {% next_button %}
 
 {% endblock %}

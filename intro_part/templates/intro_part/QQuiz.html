@@ -4,19 +4,18 @@
 
 {% block content %}
 <p>
-    Before you guess, there is an opportunity for you to know Q, which may help you guess. You will be asked the following 2 questions.
+    Once you have seen the draw of 6 balls, but before you make your choice, you will also be given the opportunity to pay for information about the value of Q, which may help you guess. To do this, you will be asked 2 questions.
 </p>
 <p>
     First, do you want to know Q? If you choose no, then we will not show you the value of Q for sure. You can keep your 100 ECUs endowment.
 </p>
 <p>
-    Second, if you choose yes, you will be asked how much you are willing to pay for the information about Q out of your 100 ECUs endowment. Depending on your answer, you may or may not know the value of Q. For example, this is what you will see if you choose yes in the first question.
-</p>
+    Second, if you choose yes, then you will see the following list and be asked how much you are willing to pay for information about Q out of your 100 ECUs.
 <p>
     <img src= "{% static "intro_part/Urn_QQuiz.png" %}" height="350">
 </p>
 <p>
-    After you make your choices on this list, the computer will draw a number between 0 and 100. If you choose Yes at prices higher than or equal to that number, then you will pay a price equal to the random number out of your 100 ECUs endowment, and we will tell you the value of Q. If you choose Yes at prices lower than that number, then you won’t pay anything, and we won’t tell you the value of Q
+    After you make your choice on the list, the computer will randomly draw a number between 1 and 30. If you choose yes at prices higher than or equal to the random number drawn, then you will pay a price equal to that number out of your 100 ECU endowment. For example, if you say you are willing to pay for information for prices up to 10 ECU and a random number of 6 is drawn, then you will pay 6 ECUs. We will then reveal to you the value of Q for this round. If you choose Yes at prices lower than that number, then you won’t pay anything, and we won’t tell you the value of Q.
 </p>
 <p>
     On this list, for instance, “Pay 0 ECUs to know the value of Q” means getting Q for free; “Pay 10 ECUs to know the value of Q” means paying 10 ECUs for Q and keep 90 ECUs to yourself. Choosing Yes

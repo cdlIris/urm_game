@@ -28,7 +28,7 @@ SESSION_CONFIGS = [
        'name': 'urn',
        'display_name': "urn",
        'num_demo_participants': 1,
-       'app_sequence': ['experiment_urn_trt'],
+       'app_sequence': ['experiment_urn'],
     },
     {
        'name': 'pickCard',
