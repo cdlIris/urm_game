@@ -1,0 +1,46 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Question 6
+{% endblock%}
+
+{% block content %}
+<p>
+    Look at the two urns in the picture.
+</p>
+<img src= "{% static "intro_part/Round0_unknown.jpg" %}" height="400">
+<br>
+
+
+</p>
+<div id="q6">
+    {% formfield player.Q6 %}
+</div>
+<input type="hidden" name="correct_q6" id="id_correct_q6" value="0"/>
+<div id="error" style="display:none;">
+    Please reconsider your choice.
+</div>
+<div id="explanation" style="display:none;">
+    This is correct.
+</div>
+
+<button id="next_btn" class="otree-btn-next btn btn-primary next-button otree-next-button" disabled>Confirm</button>
+<script>
+    document.getElementById('q6').addEventListener('change', function (e) {
+         if ($("#id_correct_q6").val() == 0){
+            $("#id_correct_q6").val(e.target.value);
+        }
+        if (e.target.value === "40%") {
+            $("#error").hide();
+            $("#explanation").show();
+            $("#next_btn").removeAttr('disabled');
+        }
+        else{
+            $("#error").show();
+            $("#explanation").hide();
+            $("#next_btn").attr("disabled", "disabled");
+        }
+    });
+</script>
+{% endblock %}

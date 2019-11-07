@@ -53,6 +53,11 @@ class Player(BasePlayer):
                  ('B', "It is more likely that these six balls have been drawn from the “Low Q” urn.")],
         label="Which statement is true?", widget=widgets.RadioSelect)
     correct_q5 = models.StringField()
+    Q6 = models.StringField(
+        choices=["10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"],
+        label="Given information in the picture above, before seeing any ball drawings what is the probability of a red urn?",
+        widget=widgets.RadioSelect)
+    correct_q6 = models.StringField()
 
     def set_payoff(self):
         self.payoff = 0

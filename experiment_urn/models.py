@@ -16,7 +16,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 40
 
-    endowment = 10
+    endowment = 50
     ball_set_Q = [[0.7, 0.6], [0.9, 0.6], [0.7, 0.5], [0.9, 0.5]]
     Urn_set = [[0.8, 0.2], [0.6, 0.4]]
     cases = [[0.8, [0.7, 0.6]],[0.8, [0.9, 0.6]], [0.6, [0.7, 0.5]], [0.6, [0.9, 0.5]]]

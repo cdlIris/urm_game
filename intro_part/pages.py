@@ -63,7 +63,7 @@ class Q3(Page):
     form_model = models.Player
 
     def before_next_page(self):
-        if self.player.Q2 == 'B':
+        if self.player.Q3 == 'B':
             self.player.correct_q3 = 'True'
         else:
             self.player.correct_q3 = 'False'
@@ -73,7 +73,7 @@ class Q4(Page):
     form_model = models.Player
 
     def before_next_page(self):
-        if self.player.Q2 == 'A':
+        if self.player.Q4 == 'A':
             self.player.correct_q4 = 'True'
         else:
             self.player.correct_q4 = 'False'
@@ -82,10 +82,23 @@ class Q5(Page):
     form_model = models.Player
 
     def before_next_page(self):
-        if self.player.Q2 == 'B':
+        if self.player.Q5 == 'B':
             self.player.correct_q5 = 'True'
         else:
             self.player.correct_q5 = 'False'
+        self.player.set_payoff()
+        self.player.participant.vars['comprehension'] = self.player.payoff
+
+
+class Q6(Page):
+    form_fields = ['Q6', 'correct_q6']
+    form_model = models.Player
+
+    def before_next_page(self):
+        if self.player.Q6 == '40%':
+            self.player.correct_q6 = 'True'
+        else:
+            self.player.correct_q6 = 'False'
         self.player.set_payoff()
         self.player.participant.vars['comprehension'] = self.player.payoff
 
@@ -106,5 +119,6 @@ page_sequence = [
     Q3,
     Q4,
     Q5,
+    Q6,
     Round0_Start
 ]
