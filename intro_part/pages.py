@@ -106,7 +106,13 @@ class Q6(Page):
 class Round0_Start(Page):
     pass
 
+class Start(Page):
+    form_fields = ['computer_id']
+    form_model = models.Player
+    pass
+
 page_sequence = [
+    Start,
     GeneralInfo,
     Treatment1,
     Treatment1Cont,

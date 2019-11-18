@@ -26,6 +26,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    computer_id = models.StringField(label="Please enter your computer number:")
     free_Q = models.StringField(choices=["Yes", "No"], widget=widgets.RadioSelectHorizontal,
                                 label="Before you guess which urn is used, do you want to know Q?")
 

@@ -52,8 +52,13 @@ class Q1(Page):
         self.player.participant.vars['comprehension'] = self.player.payoff
 
 
+class Start(Page):
+    form_fields = ['computer_id']
+    form_model = models.Player
+    pass
 
 page_sequence = [
+    Start,
     GeneralInfo,
     Treatment1,
     Treatment1Cont,

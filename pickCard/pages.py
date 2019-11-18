@@ -29,14 +29,16 @@ class FinalResult(Page):
     def vars_for_template(self):
         # random.shuffle(self.player.participant.vars['payoff'])
         chosen_round = self.player.participant.vars['chosen_round']
-        urn = self.player.participant.vars['payoff'][chosen_round] + self.player.participant.vars['comprehension']
-        urn = round(float(urn) * self.session.config['real_world_currency_per_point'],2)
-        IQ = round(float(self.player.participant.vars['IQ']) * self.session.config['real_world_currency_per_point'], 2)
-        self.player.final_payoff = urn + IQ + Constants.show_up
+        urn = self.player.participant.vars['payoff'][chosen_round]
+        comprehension = round(float(self.player.participant.vars['comprehension']), 1)
+        urn = round(float(urn) * self.session.config['real_world_currency_per_point'],1)
+        IQ = round(float(self.player.participant.vars['IQ']) * self.session.config['real_world_currency_per_point'], 1)
+        self.player.final_payoff = round(urn + IQ + Constants.show_up + comprehension, 1)
         return {
             'Urn': urn,
             'IQ': IQ,
             'show_up': Constants.show_up,
+            'comprehension': comprehension,
             'total': urn + IQ + Constants.show_up
         }
 

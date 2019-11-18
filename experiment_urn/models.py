@@ -89,8 +89,8 @@ class Player(BasePlayer):
     StrategyQ_7 = models.StringField(choices=['Yes', 'No'], widget=widgets.RadioSelectHorizontal,
                                       label="6 red balls and 0 black balls are drawn.")
 
-    q1 = models.StringField(label='You decided sometimes to pay for information about Q when it’s not free. What were your reasons?')
-    q2 = models.StringField(label="Sometimes you decided not to obtain information about Q even for free. What were your reasons?")
+    q1 = models.StringField(label='If you have chosen sometimes to pay for information about Q when it\'s NOT free. What were your reasons?')
+    q2 = models.StringField(label="If you have chosen sometimes NOT to obtain information about Q even when it's free. What were your reasons?")
 
 
     def flip_coin(self):
