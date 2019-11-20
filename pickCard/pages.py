@@ -39,7 +39,7 @@ class FinalResult(Page):
             'IQ': IQ,
             'show_up': Constants.show_up,
             'comprehension': comprehension,
-            'total': urn + IQ + Constants.show_up
+            'total': urn + IQ + Constants.show_up + comprehension
         }
 
 page_sequence = [
