@@ -32,7 +32,6 @@ class IntroQ(Page):
             'black': black,
             'round_num': self.round_number,
             'pic':pic
-
         }
 
 
